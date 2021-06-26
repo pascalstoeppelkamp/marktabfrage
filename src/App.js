@@ -30,7 +30,7 @@ export default class App extends Component {
             <Box style={{ height: '100%', width: '100%' }}><Form /></Box>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box style={{ height: '100%', width: '100%', backgroundColor: 'blue' }}>xs=12 sm=6</Box>
+            <Box style={{ height: '100%', width: '100%', backgroundColor: 'blue' }}>xs=12 sm=6  6</Box>
           </Grid>
         </Grid>
       </Box>
