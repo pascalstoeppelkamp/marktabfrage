@@ -9,14 +9,13 @@ const styles = {
     height: '100vh',
     width: '100%'
   },
-  pages: {
-    display: "flex",
-    backgroundColor: "red",
-    height: '100%',
-    width: '100%'
+  form: {
+    height: '100%', width: '100%'
   },
-  paper: {
-    height: '100%'
+  rightPage: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'blue'
   }
 }
 export default class App extends Component {
@@ -27,10 +26,10 @@ export default class App extends Component {
         <Header />
         <Grid container spacing={3} style={{}}>
           <Grid item xs={12} sm={6}>
-            <Box style={{ height: '100%', width: '100%' }}><Form /></Box>
+            <Box style={styles.form}><Form /></Box>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box style={{ height: '100%', width: '100%', backgroundColor: 'blue' }}>xs=12 sm=6</Box>
+            <Box style={styles.rightPage}>xs=12 sm=6</Box>
           </Grid>
         </Grid>
       </Box>
