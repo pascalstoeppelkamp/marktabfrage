@@ -32,7 +32,23 @@ const fields = {
     fnb: {
         label: "Fernleitungsnetzbetreiber (FNB)",
         published: true,
-        type: "Select"
+        type: "Select",
+        values: ["bayernets GmbH",
+            "Ferngas Netzgesellschaft mbh",
+            "Fluxys Deutschland GmbH",
+            "Fluxys TENP GmbH",
+            "GASCADE Gastransport GmbH",
+            "Gastransport Nord GmbH",
+            "Gasunie Deutschland Transport Services GmbH",
+            "GRTgaz Deutschland GmbH",
+            "Lubmin - Brandov Gastransport GmbH",
+            "NEL Gastransport GmbH",
+            "Nowega GmbH",
+            "ONTRAS Gastransport GmbH",
+            "OPAL Gastransport GmbH & Co.KG",
+            "Open Grid Europe GmbH",
+            "terranets bw GmbH",
+            "Thyssengas GmbH"]
     },
     reported: {
         label: "Wasserstoff-/Grüngasprojekt für den NEP Gas 2020–2030 gemeldet?",
