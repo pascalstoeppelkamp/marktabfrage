@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import HeaderLogos from './components/HeaderLogos';
 import Header from './components/Header';
 import Form from './sites/Form';
+import Site2 from './sites/Site2';
 import { Box, Grid } from '@material-ui/core';
 
 const styles = {
@@ -14,9 +15,8 @@ const styles = {
   },
   rightPage: {
     height: '100%',
-    width: '100%',
-    backgroundColor: 'blue'
-  }
+    width: '100%'
+    }
 }
 export default class App extends Component {
   render() {
@@ -29,7 +29,7 @@ export default class App extends Component {
             <Box style={styles.form}><Form /></Box>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box style={styles.rightPage}>xs=12 sm=6</Box>
+            <Box style={styles.rightPage}><Site2 /></Box>
           </Grid>
         </Grid>
       </Box>

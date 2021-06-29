@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextField, Box, FormControlLabel, Typography, RadioGroup, Radio, Select, MenuItem, Button } from '@material-ui/core';
+import { TextField, Box, FormControlLabel, Typography, RadioGroup, Radio, Select, MenuItem } from '@material-ui/core';
 
 const styles = {
     container: {
@@ -71,7 +71,7 @@ export default class FormComponent extends Component {
                 <MenuItem value={item} onClick={this.handleClose}>{item}</MenuItem>
             )
         })
-        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "white" }}>
+        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
 
             <Select
                 labelId="demo-controlled-open-select-label"
@@ -101,7 +101,7 @@ export default class FormComponent extends Component {
                 /></Box>
             )
         })
-        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "white" }}>
+        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
             <RadioGroup row aria-label="position" style={styles.radioGroup}>
                 {arr}
             </RadioGroup>
