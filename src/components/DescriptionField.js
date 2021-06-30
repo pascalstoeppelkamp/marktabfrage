@@ -8,7 +8,9 @@ const styles = {
         height: '100%',
         backgroundColor: "#FFE4C470",
         textAlignVertical: 'top',
-        resize: "none"
+        resize: "none",
+        fontFamily: "sans-serif",
+        fontSize: 12,
     }
 }
 

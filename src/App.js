@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Form from './sites/Form';
 import Site2 from './sites/Site2';
 import { Box, Grid } from '@material-ui/core';
-
+import Table from './components/Table';
 const styles = {
   container: {
     height: '100vh',
@@ -16,7 +16,7 @@ const styles = {
   rightPage: {
     height: '100%',
     width: '100%'
-    }
+  }
 }
 export default class App extends Component {
   render() {
@@ -32,6 +32,9 @@ export default class App extends Component {
             <Box style={styles.rightPage}><Site2 /></Box>
           </Grid>
         </Grid>
+        <Box style={{marginTop:20}}>
+          <Table />
+        </Box>
       </Box>
     )
   }
