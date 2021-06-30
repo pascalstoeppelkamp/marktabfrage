@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import data from '../data/Data';
 import { Box } from '@material-ui/core';
-import FormComponent from '../components/FormComponent';
+import FormComponent from './../components/FormComponent';
 
 const styles = {
     container: {

@@ -55,7 +55,7 @@ const fields = {
     reported: {
         label: "Wasserstoff-/Grüngasprojekt für den NEP Gas 2020–2030 gemeldet?",
         published: false,
-        type: "Checkbox",
+        type: "Radiobutton",
         values: ["ja", "nein"]
     },
     involved: {
@@ -95,12 +95,13 @@ const fields = {
     },
     coordinates: {
         label: "Koordinaten des Projektstandortes (rechts/links)",
-        type: "",
-        published: false
+        type: "Radiobutton",
+        published: false,
+        values : ["UTM-Koordinaten","Gauß-Krüger-Koordinaten"]
     },
     FeedExit: {
         label: "Einspeisung/Ausspeisung",
-        type: "Checkbox",
+        type: "Radiobutton",
         values: ["Einspeisung (Quelle)", "Ausspeisung (Senke)"],
         published: true
     },
@@ -122,7 +123,7 @@ const fields = {
     },
     inquiry: {
         label: "Anfrage parallel gestellt bei:",
-        type: "Checkbox",
+        type: "Radiobutton",
         published: true,
         values: ["Fernleitungsnetzarbeit", "Drittnetze", "Verteilernetzbetreiber", "Nein"]
     },
@@ -138,13 +139,13 @@ const fields = {
     },
     causeReduction: {
         label: "Führt das Wasserstoff-/Grüngasprojekt zu einer Reduzierung des Erdgasbedarfs?",
-        type: "Checkbox",
+        type: "Radiobutton",
         values: ["Ja", "Nein"],
         published: false
     },
     agreePublishing: {
         label: "Hiermit stimmen wir einer Veröffentlichung der gekennzeichneten Daten",
-        type: "Checkbox",
+        type: "Radiobutton",
         values: ["Ja", "Nein"],
         published: true
     }
