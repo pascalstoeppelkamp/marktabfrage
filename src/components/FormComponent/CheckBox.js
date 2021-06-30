@@ -5,7 +5,7 @@ export default class CheckBox extends Component {
         let arr = []
         values.forEach((item) => {
             arr.push(
-                <Box style={{ flex: 1 }}>
+                <Box style={{ flex: 1}}>
                     <FormControlLabel
                         value={item}
                         control={<Checkbox color="primary" />}
