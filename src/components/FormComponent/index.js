@@ -4,7 +4,7 @@ import TextField from './TextField';
 import RadioButton from './RadioButton'
 import DropDown from './DropDown';
 import CheckBox from './CheckBox';
-
+import DatePicker from './DatePicker';
 const styles = {
     container: {
         display: "flex",
@@ -52,6 +52,8 @@ export default class FormComponent extends Component {
                 return <DropDown setAllData={this.props.setAllData} id={id} values={values} data={data} published={published} />
             case "Checkbox":
                 return <CheckBox setAllData={this.props.setAllData} id={id} values={values} data={data} published={published} />
+            case "Datepicker":
+                return <DatePicker setAllData={this.props.setAllData} id={id} values={values} data={data} published={published} />
             default:
                 return <TextField setAllData={this.props.setAllData} data={data} id={id} published={published} />
         }

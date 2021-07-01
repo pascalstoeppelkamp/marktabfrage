@@ -21,7 +21,7 @@ export default class Site2 extends Component {
         return (
             <Box style={styles.container}>
                 <Box style={styles.description}>
-                    <DescriptionField />
+                    <DescriptionField allData={this.props.allData} />
                 </Box>
                 <Box style={styles.image}>
                     <NetworkDevelopmentPlan />

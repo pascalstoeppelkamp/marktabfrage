@@ -5,6 +5,7 @@ import Form from './sites/Form';
 import Site2 from './sites/Site2';
 import { Box, Grid } from '@material-ui/core';
 import Table from './components/Table';
+
 const styles = {
   container: {
     height: '100vh',
@@ -18,6 +19,7 @@ const styles = {
     width: '100%'
   }
 }
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -25,27 +27,33 @@ export default class App extends Component {
       allData: {}
     }
   }
-  setAllData(data) {
-    let { allData } = this.state;
-    let { id, value, label } = data;
-    allData[id] = data;
 
+  setAllData = (data) => {
+    let { allData } = this.state;
+    let { id } = data;
+    allData[id] = data;
     this.setState({ allData })
   }
-  render() {
 
+  render() {
     return (
       <Box style={styles.container}>
         <HeaderLogos />
         <Header />
-        <Grid container spacing={3} style={{}}>
+
+        <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <Box style={styles.form}><Form setAllData={this.setAllData.bind(this)} /></Box>
+            <Box style={styles.form}>
+              <Form setAllData={this.setAllData} />
+            </Box>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box style={styles.rightPage}><Site2 /></Box>
+            <Box style={styles.rightPage}>
+              <Site2 allData={this.setAllData} />
+            </Box>
           </Grid>
         </Grid>
+
         <Box style={{ marginTop: 20 }}>
           <Table />
         </Box>

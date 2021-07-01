@@ -156,7 +156,7 @@ const fields = {
     },
     plannedInstallation: {
         label: "Geplante Inbetriebnahme (Monat/Jahr)",
-        type: "Textfield",
+        type: "Datepicker",
         published: true,
         id: "plannedInstallation",
         value:{}
