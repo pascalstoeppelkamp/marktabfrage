@@ -20,30 +20,33 @@ export default class DropDown extends Component {
             ({ anchorEl: true })
     }
 
-    handleChange = (item) => {
-        console.log(item);
-        this.setState({ SelectedValue: item.target.value })
+    handleChange = (item, data, fromRadioBtn) => {
+        item = item.target.value;
+        fromRadioBtn ? data.dropdownValue = item : data.value = item;
+        this.props.setAllData(data)
+        this.setState({ SelectedValue: item })
     }
 
 
-    dropdown = (values, published) => {
+    dropdown = (values, published, key, data, fromRadioBtn) => {
         let { anchorEl, SelectedValue } = this.state;
         let arr = []
         values.forEach((item) => {
             arr.push(
-                <MenuItem value={item} onClick={this.handleClose}>{item}</MenuItem>
+                <MenuItem value={item} key={`${key}MenuItem`} onClick={this.handleClose}>{item}</MenuItem>
             )
         })
-        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
+        return <Box key={`${key}Box`} vborder={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
 
             <Select
+                key={`${key}Select`}
                 labelId="demo-controlled-open-select-label"
                 id={"demo-controlled-open-select"}
                 open={anchorEl}
                 onClose={this.handleClose}
                 onOpen={this.handleClick}
                 style={{ width: '100%' }}
-                onChange={this.handleChange}
+                onChange={(value) => this.handleChange(value, data, fromRadioBtn)}
                 value={SelectedValue}
             >
                 {arr}
@@ -51,9 +54,10 @@ export default class DropDown extends Component {
         </Box>
     }
     render() {
-        let { values, published } = this.props
+        let { values, published, id, data, fromRadioBtn } = this.props;
+        let key = id;
         return (
-            this.dropdown(values, published)
+            this.dropdown(values, published, key, data, fromRadioBtn)
         )
     }
 }

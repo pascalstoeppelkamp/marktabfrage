@@ -19,10 +19,14 @@ const styles = {
     }
 }
 export default class Form extends Component {
+    _changeText(data) {
+        this.props.changeText(data)
+    }
+
     _getTextFields = () => {
         let arr = [];
-        for (const [key, value] of Object.entries(data)) {
-            arr.push(<FormComponent data={value} key={key} />);
+        for (const [id, value] of Object.entries(data)) {
+            arr.push(<FormComponent setAllData={this.props.setAllData} key={id} data={value} />);
         }
         return arr;
     }

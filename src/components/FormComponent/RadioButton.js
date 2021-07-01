@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Box, FormControlLabel, Typography, MenuItem, Select, Radio, RadioGroup } from '@material-ui/core';
 import TextField from './TextField';
 import DropDown from './DropDown';
+import { keys } from '@material-ui/core/styles/createBreakpoints';
 const styles = {
     radioGroup: {
         flex: 1,
@@ -35,7 +36,13 @@ export default class RadioButton extends Component {
         this.setState({ SelectedValue })
     }
 
-    radiobtn = (label, values, published) => {
+    _RadioButton = (value, data) => {
+        value = value.target.value;
+        data.value = value;
+        this.props.setAllData(data);
+    }
+
+    radiobtn = (label, values, published, key, data) => {
         let arr = [];
         let coordsField = false;
 
@@ -45,32 +52,34 @@ export default class RadioButton extends Component {
 
         values.forEach((item) => {
             arr.push(
-                <Box style={{ flex: 1 }}><FormControlLabel
+                <Box key={`${key}Box`} style={{ flex: 1 }} ><FormControlLabel
+                    key={`${key}FormControlLabel`}
                     value={item}
-                    control={<Radio color="primary" value={item} onClick={coordsField ? this._coordsField : this._radioButtonField} />}
-                    label={<Typography style={{ fontSize: 12 }}>{item}</Typography>}
-                    labelPlacement="End"
+                    control={<Radio key={`${key}Radio`} color="primary" value={item} onClick={(value) => this._RadioButton(value, data)} />}
+                    label={<Typography key={`${key}Typography`} style={{ fontSize: 12 }}>{item}</Typography>}
+                    labelPlacement="end"
                     style={{ paddingLeft: 10, paddingTop: 1 }}
                 />
                     {coordsField ?
                         <div style={{ width: '99%' }}>
-                            <DropDown values={["Bitte Ausfüllen", "Entry / Quelle", "Exit / Senke"]} />
-                            <TextField published={published} /></div>
+                            <DropDown setAllData={this.props.setAllData} fromRadioBtn={true} data={data} key={`${key}DropDown`} values={["Bitte Ausfüllen", "Entry / Quelle", "Exit / Senke"]} />
+                            <TextField setAllData={this.props.setAllData} fromRadioBtn={true} data={data} key={`${key}TextField`} published={published} /* value={} */ /></div>
                         : null}</Box>
             )
         })
 
-        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
-            <RadioGroup row aria-label="position" style={styles.radioGroup}>
+        return <Box key={`${key}Container`} border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
+            <RadioGroup key={`${key}RadioGroup`} row aria-label="position" style={styles.radioGroup}>
                 {arr}
             </RadioGroup>
         </Box>
 
     }
     render() {
-        let { label, values, published } = this.props;
+        let { label, values, published, id, data } = this.props;
+        let key = id;
         return (
-            this.radiobtn(label, values, published)
+            this.radiobtn(label, values, published, key, data)
         )
     }
 }

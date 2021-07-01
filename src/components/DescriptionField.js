@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Box } from "@material-ui/core";
+import { TextField, Box, Typography } from "@material-ui/core";
 
 
 const styles = {
@@ -18,7 +18,7 @@ export default class Test extends React.Component {
     render() {
         return (
             <Box style={{ height: '100%', width: '100%' }}>
-                <t style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</t>
+                <Typography style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</Typography>
                 <Box style={{ height: '100%', width: '100%' }}>
                     <textarea
                         style={styles.input}

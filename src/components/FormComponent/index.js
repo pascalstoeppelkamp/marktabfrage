@@ -37,19 +37,23 @@ export default class FormComponent extends Component {
         }
     }
 
+    _changeText(data) {
+        this.props.changeText(data)
+    }
+
     _returnData = (data) => {
-        const { published, values, label, type } = data;
+        const { published, values, label, type, id } = data;
         switch (type) {
             case "Textfield":
-                return <TextField published={published} />
+                return <TextField setAllData={this.props.setAllData} id={id} published={published} data={data} />
             case "Radiobutton":
-                return <RadioButton values={values} published={published} label={label} />
+                return <RadioButton setAllData={this.props.setAllData} id={id} values={values} published={published} data={data} label={label} />
             case "Select":
-                return <DropDown values={values} published={published} />
+                return <DropDown setAllData={this.props.setAllData} id={id} values={values} data={data} published={published} />
             case "Checkbox":
-                return <CheckBox values={values} published={published} />
+                return <CheckBox setAllData={this.props.setAllData} id={id} values={values} data={data} published={published} />
             default:
-                return <TextField published={published} />
+                return <TextField setAllData={this.props.setAllData} data={data} id={id} published={published} />
         }
 
     }
@@ -57,9 +61,8 @@ export default class FormComponent extends Component {
     render() {
         const data = this.props.data;
         const { label } = this.props.data;
-        const { key } = this.props;
         return (
-            <Box style={styles.container} key={key}>
+            <Box style={styles.container} >
                 <Box style={styles.label}>
                     {label}
                 </Box>

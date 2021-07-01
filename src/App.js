@@ -19,20 +19,34 @@ const styles = {
   }
 }
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allData: {}
+    }
+  }
+  setAllData(data) {
+    let { allData } = this.state;
+    let { id, value, label } = data;
+    allData[id] = data;
+
+    this.setState({ allData })
+  }
   render() {
+
     return (
       <Box style={styles.container}>
         <HeaderLogos />
         <Header />
         <Grid container spacing={3} style={{}}>
           <Grid item xs={12} sm={6}>
-            <Box style={styles.form}><Form /></Box>
+            <Box style={styles.form}><Form setAllData={this.setAllData.bind(this)} /></Box>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box style={styles.rightPage}><Site2 /></Box>
           </Grid>
         </Grid>
-        <Box style={{marginTop:20}}>
+        <Box style={{ marginTop: 20 }}>
           <Table />
         </Box>
       </Box>
