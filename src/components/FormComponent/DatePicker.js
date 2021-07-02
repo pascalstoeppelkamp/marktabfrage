@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import {
-    DatePicker,
-    TimePicker,
-    DateTimePicker,
-    MuiPickersUtilsProvider,
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/moment'; // choose your lib
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/moment';
+import "moment/locale/de";
+
+const styles = {
+    KeyboardDatePicker: {
+        width: '100%', backgroundColor: "#FFE4C470"
+    },
+
+}
 export default class DatePickerr extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +27,11 @@ export default class DatePickerr extends Component {
         let { data } = this.props;
         return (
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DatePicker format={"DD/MM/YYYY"} style={{ width: '100%' }} value={selectedDate} onChange={(date) => this.handleDateChange(date, data)} />
+                <KeyboardDatePicker
+                    style={styles.KeyboardDatePicker}
+                    format={"MM/YYYY"}
+                    value={selectedDate}
+                    onChange={(date) => this.handleDateChange(date, data)} />
             </MuiPickersUtilsProvider>
         )
     }

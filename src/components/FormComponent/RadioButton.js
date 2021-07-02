@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Box, FormControlLabel, Typography, MenuItem, Select, Radio, RadioGroup } from '@material-ui/core';
+import { Box, FormControlLabel, Typography, Radio, RadioGroup } from '@material-ui/core';
 import TextField from './TextField';
 import DropDown from './DropDown';
-import { keys } from '@material-ui/core/styles/createBreakpoints';
 const styles = {
     radioGroup: {
         flex: 1,
@@ -52,11 +51,11 @@ export default class RadioButton extends Component {
 
         values.forEach((item) => {
             arr.push(
-                <Box key={`${key}Box`} style={{ flex: 1 }} ><FormControlLabel
-                    key={`${key}FormControlLabel`}
+                <Box style={{ flex: 1 }} key={item}><FormControlLabel
+
                     value={item}
-                    control={<Radio key={`${key}Radio`} color="primary" value={item} onClick={(value) => this._RadioButton(value, data)} />}
-                    label={<Typography key={`${key}Typography`} style={{ fontSize: 12 }}>{item}</Typography>}
+                    control={<Radio color="primary" value={item} onClick={(value) => this._RadioButton(value, data)} />}
+                    label={<Typography style={{ fontSize: 12 }}>{item}</Typography>}
                     labelPlacement="end"
                     style={{ paddingLeft: 10, paddingTop: 1 }}
                 />
@@ -68,8 +67,8 @@ export default class RadioButton extends Component {
             )
         })
 
-        return <Box key={`${key}Container`} border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
-            <RadioGroup key={`${key}RadioGroup`} row aria-label="position" style={styles.radioGroup}>
+        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF" }}>
+            <RadioGroup row aria-label="position" style={styles.radioGroup}>
                 {arr}
             </RadioGroup>
         </Box>

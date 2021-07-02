@@ -16,16 +16,16 @@ export default class CheckBox extends Component {
         values.forEach((item) => {
             arr.push(
                 <FormControlLabel
-                    key={`${key}FormControlLabel`}
+                    key={item}
                     value={item}
-                    control={<Checkbox color="primary" key={key} value={item} onClick={(value) => this._SetCheckBox(value, data)} />}
-                    label={<Typography key={`${key}Typography`} style={{ fontSize: 12 }}>{item}</Typography>}
+                    control={<Checkbox key={`${item}Checkbox`} color="primary" value={item} onClick={(value) => this._SetCheckBox(value, data)} />}
+                    label={<Typography style={{ fontSize: 12 }}>{item}</Typography>}
                     labelPlacement="end"
                     style={{ paddingLeft: 10, paddingTop: 1, flex: 1 }}
                 />
             )
         })
-        return <Box key={`${key}Box`} border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF", justifyContent: "space-evenly" }}>
+        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF", justifyContent: "space-evenly" }}>
             {arr}
         </Box>
     }

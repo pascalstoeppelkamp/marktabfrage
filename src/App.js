@@ -12,7 +12,8 @@ const styles = {
     width: '100%'
   },
   form: {
-    height: '100%', width: '100%'
+    height: '100%',
+    width: '100%'
   },
   rightPage: {
     height: '100%',
@@ -24,7 +25,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allData: {}
+      allData: {
+        table: {}
+      }
     }
   }
 
@@ -35,6 +38,13 @@ export default class App extends Component {
     this.setState({ allData })
   }
 
+  setTableData = (data) => {
+    let { allData } = this.state;
+    let { id } = data;
+    allData.table[id] = data;
+    this.setState({ allData })
+
+  }
   render() {
     return (
       <Box style={styles.container}>
@@ -55,7 +65,7 @@ export default class App extends Component {
         </Grid>
 
         <Box style={{ marginTop: 20 }}>
-          <Table />
+          <Table tableData={this.setTableData} />
         </Box>
       </Box>
     )

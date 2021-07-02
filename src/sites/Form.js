@@ -33,7 +33,7 @@ export default class Form extends Component {
     render() {
         return (
             <Box style={styles.container}>
-                <Box style={styles.header}><h3 style={{ fontFamily: "sans-serif" }}>Ansprechpartner</h3></Box>
+                <Box style={styles.header}><h3 style={{ fontFamily: "sans-serif",color:"white" }}>Ansprechpartner*in</h3></Box>
                 {this._getTextFields()}
             </Box>
 
