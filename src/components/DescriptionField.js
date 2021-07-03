@@ -4,8 +4,7 @@ import { Box, Typography } from "@material-ui/core";
 
 const styles = {
     input: {
-        width: '100%',
-        height: '100%',
+        flex: 1,
         backgroundColor: "#FFE4C470",
         textAlignVertical: 'top',
         resize: "none",
@@ -40,16 +39,16 @@ export default class Test extends React.Component {
     render() {
         let { descriptionField } = this.state;
         return (
-            <Box style={{ height: '100%', width: '100%' }}>
-                <Typography style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</Typography>
-                <Box style={{ height: '100%', width: '100%' }}>
+            /* <Box style={{ height: '100%', width: '100%' }}>
+                <Typography style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</Typography> */
+                <Box style={{ height: '100%', width: '100%', display: "flex" }}>
                     <textarea
                         style={styles.input}
                         value={descriptionField.value}
                         onChange={this._changeTextField}
                     />
                 </Box>
-            </Box>
+            /* </Box> */
         );
     }
 }

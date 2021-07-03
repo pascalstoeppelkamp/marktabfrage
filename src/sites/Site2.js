@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Box} from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import DescriptionField from '../components/DescriptionField';
 import NetworkDevelopmentPlan from './../components/NetworkDevelopmentPlan';
 const styles = {
@@ -13,13 +13,14 @@ const styles = {
         flex: 2,
     },
     image: {
+        marginTop:10,
         flex: 1
     }
 }
 export default class Site2 extends Component {
     render() {
         return (
-            <Box style={styles.container}>
+            <Box style={styles.container}> <Typography style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</Typography>
                 <Box style={styles.description}>
                     <DescriptionField allData={this.props.allData} />
                 </Box>

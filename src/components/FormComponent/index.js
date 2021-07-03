@@ -9,21 +9,23 @@ const styles = {
     container: {
         display: "flex",
         width: '100%',
+
         heigth: '100%',
-        marginTop: 10
+        marginTop: 10,
     },
     label: {
         flex: 1,
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "flex-end",
-        fontFamily: "sans-serif"
+        fontFamily: "sans-serif",
+
     },
     textfield: {
         flex: 1,
         display: "flex",
         justifyContent: "flex-start",
-        alignItems: "flex-end"
+        alignItems: "flex-end",
     }
 }
 

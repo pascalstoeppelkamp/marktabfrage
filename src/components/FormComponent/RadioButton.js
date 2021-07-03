@@ -60,7 +60,7 @@ export default class RadioButton extends Component {
                     style={{ paddingLeft: 10, paddingTop: 1 }}
                 />
                     {coordsField ?
-                        <div style={{ width: '99%' }}>
+                        <div style={{ width: '100%' }}>
                             <DropDown setAllData={this.props.setAllData} fromRadioBtn={true} data={data} key={`${key}DropDown`} values={["Bitte Ausfüllen", "Entry / Quelle", "Exit / Senke"]} />
                             <TextField setAllData={this.props.setAllData} fromRadioBtn={true} data={data} key={`${key}TextField`} published={published} /* value={} */ /></div>
                         : null}</Box>

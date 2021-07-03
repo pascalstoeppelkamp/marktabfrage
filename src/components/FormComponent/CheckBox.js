@@ -19,13 +19,13 @@ export default class CheckBox extends Component {
                     key={item}
                     value={item}
                     control={<Checkbox key={`${item}Checkbox`} color="primary" value={item} onClick={(value) => this._SetCheckBox(value, data)} />}
-                    label={<Typography style={{ fontSize: 12 }}>{item}</Typography>}
+                    label={<Typography style={{ fontSize: 15 }}>{item}</Typography>}
                     labelPlacement="end"
-                    style={{ paddingLeft: 10, paddingTop: 1, flex: 1 }}
+                    style={{flex:1,paddingLeft:5,paddingTop:5 }}
                 />
             )
         })
-        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', backgroundColor: published ? "#FFE4C470" : "#FFFFFF", justifyContent: "space-evenly" }}>
+        return <Box border={1} borderColor="grey.500" style={{ width: '100%', display: 'flex', flexWrap:"wrap",backgroundColor: published ? "#FFE4C470" : "#FFFFFF", justifyContent: "space-evenly" }}>
             {arr}
         </Box>
     }

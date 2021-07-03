@@ -31,6 +31,9 @@ export default class DatePickerr extends Component {
                     style={styles.KeyboardDatePicker}
                     format={"MM/YYYY"}
                     value={selectedDate}
+                    KeyboardButtonProps={{
+                        disabled: true, style: { display: 'none' }
+                    }}
                     onChange={(date) => this.handleDateChange(date, data)} />
             </MuiPickersUtilsProvider>
         )
