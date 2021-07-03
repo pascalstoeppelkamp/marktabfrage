@@ -9,13 +9,15 @@ const styles = {
         width: '100%'
     },
     header: {
-        backgroundColor: "lightgreen",
+        backgroundColor: "rgb(106, 172, 69)",
         height: 40,
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
         width: '100%',
-        display: "flex"
+        display: "flex",
+        marginTop: 30,
+        marginBottom: 30
     }
 }
 export default class Form extends Component {
@@ -26,6 +28,9 @@ export default class Form extends Component {
     _getTextFields = () => {
         let arr = [];
         for (const [id, value] of Object.entries(data)) {
+            if (id === "reported") {
+                arr.push(<Box style={styles.header}><h3 style={{ fontFamily: "sans-serif", color: "white" }}>Informationen zum Projekt</h3></Box>)
+            }
             arr.push(<FormComponent setAllData={this.props.setAllData} key={id} data={value} />);
         }
         return arr;
@@ -33,7 +38,7 @@ export default class Form extends Component {
     render() {
         return (
             <Box style={styles.container}>
-                <Box style={styles.header}><h3 style={{ fontFamily: "sans-serif",color:"white" }}>Ansprechpartner*in</h3></Box>
+                <Box style={styles.header}><h3 style={{ fontFamily: "sans-serif", color: "white" }}>Ansprechpartnerin bzw. Ansprechpartner</h3></Box>
                 {this._getTextFields()}
             </Box>
 

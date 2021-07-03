@@ -16,11 +16,16 @@ const styles = {
     },
     year: {
         backgroundColor: "#FFE4C470",
-        padding: 1,
+        padding: 2,
+        borderWidth:0
     },
     TextField: {
         height: '100%',
         width: '100%'
+    },
+    names: {
+        backgroundColor: "#FFFFFF",
+        padding: 5,
     }
 }
 
@@ -40,7 +45,7 @@ export default class DataTable extends React.Component {
     }
     render() {
         return (
-            <TableContainer >
+            <TableContainer style={{ padding: 0 }} >
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -64,10 +69,10 @@ export default class DataTable extends React.Component {
                     <TableBody>
 
                         {Object.keys(rows).map((row, index) => (
-                            <TableRow key={index}>
-                                <TableCell align="center">{rows[row].punktart}</TableCell>
-                                <TableCell align="center">{rows[row].einAusspeisung}</TableCell>
-                                <TableCell align="center">{rows[row].einheit}</TableCell>
+                            <TableRow style={{ padding: 0 }} key={index}>
+                                <TableCell style={styles.names} align="center">{rows[row].punktart}</TableCell>
+                                <TableCell style={styles.names} align="center">{rows[row].einAusspeisung}</TableCell>
+                                <TableCell style={styles.names} align="center">{rows[row].einheit}</TableCell>
                                 <TableCell align="center" style={styles.year}><TextField id={"zweidrei"} data={row} onChange={(text, id) => this._changeTextField(text, rows[row], row)} /></TableCell>
                                 <TableCell align="center" style={styles.year}><TextField id={"zweivier"} data={row} onChange={(text, id) => this._changeTextField(text, rows[row], row)} /></TableCell>
                                 <TableCell align="center" style={styles.year}><TextField id={"zweifuenf"} data={row} onChange={(text, id) => this._changeTextField(text, rows[row], row)} /></TableCell>

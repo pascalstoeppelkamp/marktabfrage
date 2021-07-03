@@ -163,9 +163,9 @@ const fields = {
     },
     inquiry: {
         label: "Anfrage parallel gestellt bei:",
-        type: "Radiobutton",
+        type: "Checkbox",
         published: true,
-        values: ["Fernleitungsnetzarbeit", "Drittnetze", "Verteilernetzbetreiber", "Nein"],
+        values: ["Fernleitungsnetzbetreiber", "Drittnetze", "Verteilernetzbetreiber", "Nein"],
         id: "inquiry",
         value:{}
     },
