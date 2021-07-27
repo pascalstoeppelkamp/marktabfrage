@@ -17,7 +17,7 @@ const styles = {
     year: {
         backgroundColor: "#FFE4C470",
         padding: 2,
-        borderWidth:0
+        borderWidth:0,
     },
     TextField: {
         height: '100%',

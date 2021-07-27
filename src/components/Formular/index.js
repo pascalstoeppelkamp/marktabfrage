@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import HeaderLogos from './components/HeaderLogos';
-import HeaderLogin from './components/HeaderLogin';
-import LoginModal from './components/LoginModal';
-import Header from './components/Header';
-import Form from './sites/Form';
-import Site2 from './sites/Site2';
+import HeaderLogos from '../HeaderLogos';
+import Header from '../Header';
 import { Box, Grid, Button } from '@material-ui/core';
-import Table from './components/Table';
-import ShowAbfragen from './components/ShowAbfragen';
+import Site2 from './../../sites/Site2';
+import Form from './../../sites/Form';
+import Table from './../Table';
 const styles = {
-  container: {
-    height: '100vh',
-    width: '100%',
-  },
   form: {
     height: '100%',
     width: '100%',
@@ -22,8 +15,7 @@ const styles = {
     width: '100%',
   },
 };
-
-export default class App extends Component {
+export default class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +25,6 @@ export default class App extends Component {
       userRole: null,
     };
   }
-
   fetchData = async (allData, tableData) => {
     let data = {};
     for (let item in allData) {
@@ -74,15 +65,34 @@ export default class App extends Component {
       userRole: data.role,
     });
   };
-
   render() {
-    let { userToken, username, userRole } = this.state;
+    let { allData, tableData } = this.state;
     return (
-      <Box style={styles.container}>
-        <HeaderLogos />
-        {!userToken ? <LoginModal _Login={this._Login} /> : null}
-        <HeaderLogin username={username} userRole={userRole} />
-      </Box>
+      <>
+        <Header />
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <Box style={styles.form}>
+              <Form setAllData={this.setAllData} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box style={styles.rightPage}>
+              <Site2 allData={this.setAllData} />
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Box style={{ marginTop: 20 }}>
+          <Table tableData={this.setTableData} />
+        </Box>
+        <Button
+          style={{ height: 50, width: 150, background: 'grey', margin: 10 }}
+          onClick={() => this.fetchData(allData, tableData)}
+        >
+          Senden
+        </Button>
+      </>
     );
   }
 }

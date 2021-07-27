@@ -1,54 +1,53 @@
-import React from "react";
-import { Box, Typography } from "@material-ui/core";
-
+import React from 'react';
+import { Box, Typography } from '@material-ui/core';
 
 const styles = {
-    input: {
-        flex: 1,
-        backgroundColor: "#FFE4C470",
-        textAlignVertical: 'top',
-        resize: "none",
-        fontFamily: "sans-serif",
-        fontSize: 12,
-    }
-}
+  input: {
+    flex: 1,
+    backgroundColor: '#FFE4C470',
+    textAlignVertical: 'top',
+    resize: 'none',
+    fontFamily: 'sans-serif',
+    fontSize: 15,
+  },
+};
 
 export default class Test extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            descriptionField: {
-                label: "Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus",
-                type: "TextField",
-                published: true,
-                id: "descriptionField",
-                value: ""
-            },
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      ProjectDescription: {
+        label:
+          'Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus',
+        type: 'TextField',
+        published: true,
+        id: 'ProjectDescription',
+        value: '',
+      },
+    };
+  }
 
-    _changeTextField = (value) => {
-        value = value.target.value;
-        let { descriptionField } = this.state;
-        descriptionField.value = value
-        this.setState({ descriptionField })
-        this.props.allData(descriptionField)
+  _changeTextField = (value) => {
+    value = value.target.value;
+    let { ProjectDescription } = this.state;
+    ProjectDescription.value = value;
+    this.setState({ ProjectDescription });
+    this.props.allData(ProjectDescription);
+  };
 
-    }
-
-    render() {
-        let { descriptionField } = this.state;
-        return (
-            /* <Box style={{ height: '100%', width: '100%' }}>
+  render() {
+    let { ProjectDescription } = this.state;
+    return (
+      /* <Box style={{ height: '100%', width: '100%' }}>
                 <Typography style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</Typography> */
-                <Box style={{ height: '100%', width: '100%', display: "flex" }}>
-                    <textarea
-                        style={styles.input}
-                        value={descriptionField.value}
-                        onChange={this._changeTextField}
-                    />
-                </Box>
-            /* </Box> */
-        );
-    }
+      <Box style={{ height: '100%', width: '100%', display: 'flex' }}>
+        <textarea
+          style={styles.input}
+          value={ProjectDescription.value}
+          onChange={this._changeTextField}
+        />
+      </Box>
+      /* </Box> */
+    );
+  }
 }

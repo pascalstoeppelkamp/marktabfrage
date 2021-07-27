@@ -9,7 +9,7 @@ export default class TextFieldComponent extends Component {
     render() {
         let { data, fromRadioBtn } = this.props;
         return (
-            <TextField style={{ width: '100%', backgroundColor: this.props.published ? "#FFE4C470" : "white" }} onChange={(text) => this._changeText(text, data, fromRadioBtn)} />
+            <TextField inputProps={{ min: 0, style: { marginLeft: 5 } }} style={{ width: '100%', backgroundColor: this.props.published ? "#FFE4C470" : "white" }} onChange={(text) => this._changeText(text, data, fromRadioBtn)} />
         )
     }
 }

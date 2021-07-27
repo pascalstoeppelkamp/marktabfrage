@@ -55,7 +55,7 @@ export default class RadioButton extends Component {
 
                     value={item}
                     control={<Radio color="primary" value={item} onClick={(value) => this._RadioButton(value, data)} />}
-                    label={<Typography style={{ fontSize: 12 }}>{item}</Typography>}
+                    label={<Typography style={{ fontSize: 15, padding: 10 }}>{item}</Typography>}
                     labelPlacement="end"
                     style={{ paddingLeft: 10, paddingTop: 1 }}
                 />
