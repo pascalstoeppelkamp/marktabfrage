@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Box } from '@material-ui/core';
-import ShowAbfragen from './../ShowAbfragen';
-import Formular from './../Formular';
-import InfoPage from './../InfoPage';
+import ShowAbfragen from '../ShowAbfragen';
+import Formular from '../Formular';
+import InfoPage from '../InfoPage';
 export default class Test extends Component {
   render() {
     let { value } = this.props;

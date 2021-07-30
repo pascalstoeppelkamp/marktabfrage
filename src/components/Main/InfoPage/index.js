@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class index extends Component {
   render() {
     return (
-      <div>
+      <div style={{ margin: 10 }}>
         Wir bitten um Ihre Teilnahme an der Marktabfrage. Die von Ihnen im
         Rahmen der Marktabfrage zur Verfügung gestellten personenbezogenen Daten
         werden ausschließlich von den aufgelisteten Unternehmen verarbeitet. Mit

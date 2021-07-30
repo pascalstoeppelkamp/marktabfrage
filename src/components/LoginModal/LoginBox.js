@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Box, TextField, Button } from '@material-ui/core';
+import ServerUtils from '../../utils/ServerUtils';
 
 const styles = {
   container: {
@@ -34,10 +35,19 @@ const styles = {
     marginLeft: 30,
     marginRight: 30,
   },
+  errorMsg: {
+    fontFamily: 'sans-serif',
+    color: 'red',
+    fontSize: 23,
+    paddingTop: 20,
+    marginLeft: 30,
+    marginRight: 30,
+  },
 };
 export default class LoginBox extends Component {
   constructor(props) {
     super(props);
+    this.ServerUtils = new ServerUtils();
     this.state = {
       username: '',
       password: '',
@@ -51,23 +61,13 @@ export default class LoginBox extends Component {
       email: username,
       password: password,
     };
-    await fetch('http://localhost:5000/api/v1/auth/login', {
-      method: 'POST',
-      credentials: 'include', // Don't forget to specify this if you need cookies
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((data) => (data = data.json()))
-      .then((data) => {
-        if (data.success) {
-          this.setState({ error: null });
-          this.props.Login(data);
-        } else {
-          this.setState({ error: data.error });
-        }
-      });
+    const data = await this.ServerUtils.login(body);
+    if (data.success) {
+      this.setState({ error: null });
+      this.props.Login(data);
+    } else {
+      this.setState({ error: data.error });
+    }
   };
 
   render() {
@@ -102,20 +102,7 @@ export default class LoginBox extends Component {
               Anmelden
             </Button>
           </Box>
-          {error ? (
-            <p
-              style={{
-                fontFamily: 'sans-serif',
-                color: 'red',
-                fontSize: 23,
-                paddingTop: 20,
-                marginLeft: 30,
-                marginRight: 30,
-              }}
-            >
-              {error}
-            </p>
-          ) : null}
+          {error ? <p style={styles.errorMsg}>{error}</p> : null}
         </Box>
       </Box>
     );

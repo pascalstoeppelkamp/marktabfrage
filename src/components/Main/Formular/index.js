@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import HeaderLogos from '../HeaderLogos';
 import Header from '../Header';
 import { Box, Grid, Button } from '@material-ui/core';
-import Site2 from './../../sites/Site2';
-import Form from './../../sites/Form';
-import Table from './../Table';
+import Site2 from '../../../sites/Site2';
+import Form from '../../../sites/Form';
+import Table from '../Table';
+import ServerUtils from '../../../utils/ServerUtils';
 const styles = {
   form: {
     height: '100%',
@@ -14,10 +14,17 @@ const styles = {
     height: '100%',
     width: '100%',
   },
+  sendButton: {
+    height: 50,
+    width: 150,
+    background: 'grey',
+    margin: 10,
+  },
 };
 export default class index extends Component {
   constructor(props) {
     super(props);
+    this.ServerUtils = new ServerUtils();
     this.state = {
       allData: {},
       tableData: {},
@@ -30,18 +37,8 @@ export default class index extends Component {
     for (let item in allData) {
       data[allData[item].id] = allData[item].value;
     }
-    /*   for (let item in tableData) {
-      data.push(tableData[(item.label = tableData[item.value])]);
-    } */
-    await fetch('http://localhost:5000/api/v1/eintraege', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((data) => (data = data.json()))
-      .then((data) => console.log(data));
+
+    await this.ServerUtils.sendData(data);
   };
 
   setAllData = (data) => {
@@ -87,7 +84,7 @@ export default class index extends Component {
           <Table tableData={this.setTableData} />
         </Box>
         <Button
-          style={{ height: 50, width: 150, background: 'grey', margin: 10 }}
+          style={styles.sendButton}
           onClick={() => this.fetchData(allData, tableData)}
         >
           Senden

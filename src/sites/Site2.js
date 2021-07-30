@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Box, Typography } from '@material-ui/core';
-import DescriptionField from '../components/DescriptionField';
-import NetworkDevelopmentPlan from './../components/NetworkDevelopmentPlan';
+import DescriptionField from '../components/Main/DescriptionField';
+import NetworkDevelopmentPlan from '../components/Main/NetworkDevelopmentPlan';
 const styles = {
     container: {
         width: '100%',

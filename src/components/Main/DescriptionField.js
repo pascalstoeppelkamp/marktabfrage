@@ -38,8 +38,6 @@ export default class Test extends React.Component {
   render() {
     let { ProjectDescription } = this.state;
     return (
-      /* <Box style={{ height: '100%', width: '100%' }}>
-                <Typography style={{ fontFamily: "sans-serif" }}>Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:</Typography> */
       <Box style={{ height: '100%', width: '100%', display: 'flex' }}>
         <textarea
           style={styles.input}
@@ -47,7 +45,6 @@ export default class Test extends React.Component {
           onChange={this._changeTextField}
         />
       </Box>
-      /* </Box> */
     );
   }
 }

@@ -6,7 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { TextField } from '@material-ui/core';
-import rows from './../data/TableData';
+import rows from '../../data/TableData';
 const styles = {
     header: {
         fontSize: 15,

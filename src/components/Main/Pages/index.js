@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import { Box, Button, Tab, Tabs, TabPanel, AppBar } from '@material-ui/core';
-import Test from './../TabHandler';
+import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
+import ServerUtils from '../../../utils/ServerUtils';
+import Test from '../TabHandler';
+
 const styles = {
-  container: {
-    width: '100%',
-    backgroundColor: 'grey',
-    height: 60,
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  dataContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: '100%',
-  },
   email: {
     justifyContent: 'flex-start',
     flex: 1,
@@ -25,33 +15,28 @@ const styles = {
     flex: 1,
     display: 'flex',
   },
+  appBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: 'rgb(106, 172, 69)',
+  },
 };
+
 export default class index extends Component {
   constructor(props) {
     super(props);
+    this.ServerUtils = new ServerUtils();
     this.state = {
       value: 0,
     };
   }
 
   _Logout = async () => {
-    await fetch('http://localhost:5000/api/v1/auth/logout').then((data) =>
-      (data = data.json()).then((data) => console.log(data))
-    );
-    document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    localStorage.clear();
-    window.location.href = '/';
+    await this.ServerUtils.logout();
   };
 
   handleChange = (event, newValue) => {
     this.setState({ value: newValue });
-  };
-
-  a11yProps = (index) => {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
   };
 
   render() {
@@ -59,33 +44,19 @@ export default class index extends Component {
     let { value } = this.state;
     return (
       <>
-        <AppBar
-          position="static"
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            backgroundColor: 'rgb(106, 172, 69)',
-          }}
-        >
-          <Tabs
-            style={{ flex: 1 }}
-            value={value}
-            onChange={this.handleChange}
-            aria-label="simple tabs example"
-          >
-            <Tab label="Informationen" {...this.a11yProps(0)} />
+        <AppBar position="static" style={styles.appBar}>
+          <Tabs style={{ flex: 1 }} value={value} onChange={this.handleChange}>
+            <Tab label="Informationen" />
             {userRole === 'user' || userRole === 'admin' ? (
-              <Tab label="Formular" {...this.a11yProps(1)} />
+              <Tab label="Formular" />
             ) : null}
-            {userRole === 'admin' ? (
-              <Tab label="Verwaltung" {...this.a11yProps(2)} />
-            ) : null}
+            {userRole === 'admin' ? <Tab label="Verwaltung" /> : null}
           </Tabs>
           {username ? (
             <Box
               style={{
                 justifyContent: 'space-between',
-                alignItems: 'flex-end',
+                alignItems: 'center',
                 display: 'flex',
               }}
             >
