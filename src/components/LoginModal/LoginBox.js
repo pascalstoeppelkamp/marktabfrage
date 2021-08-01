@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, TextField, Button } from '@material-ui/core';
+import { Box, TextField, Button, CircularProgress } from '@material-ui/core';
 import ServerUtils from '../../utils/ServerUtils';
 
 const styles = {
@@ -43,7 +43,14 @@ const styles = {
     marginLeft: 30,
     marginRight: 30,
   },
+  progressBar: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '50%',
+    zIndex: 1,
+  },
 };
+
 export default class LoginBox extends Component {
   constructor(props) {
     super(props);
@@ -52,6 +59,7 @@ export default class LoginBox extends Component {
       username: '',
       password: '',
       error: null,
+      isLoading: false,
     };
   }
 
@@ -61,19 +69,23 @@ export default class LoginBox extends Component {
       email: username,
       password: password,
     };
+    this.setState({ isLoading: true });
     const data = await this.ServerUtils.login(body);
     if (data.success) {
-      this.setState({ error: null });
+      this.setState({ error: null, isLoading: false });
       this.props.Login(data);
     } else {
-      this.setState({ error: data.error });
+      this.setState({ error: data.error, isLoading: false });
     }
   };
 
   render() {
-    let { error } = this.state;
+    let { error, isLoading } = this.state;
     return (
       <Box style={styles.container}>
+        {isLoading ? (
+          <CircularProgress disableShrink style={styles.progressBar} />
+        ) : null}
         <Box style={{ marginLeft: 30 }}>
           <p style={{ fontFamily: 'sans-serif', fontSize: 23, paddingTop: 20 }}>
             Anmeldung

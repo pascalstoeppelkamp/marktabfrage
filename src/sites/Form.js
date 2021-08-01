@@ -10,10 +10,9 @@ const styles = {
   },
   header: {
     backgroundColor: 'rgb(106, 172, 69)',
-    height: 40,
-    justifyContent: 'center',
+    height: 45,
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    alignContent: 'center',
     width: '100%',
     display: 'flex',
     marginTop: 30,
@@ -31,7 +30,13 @@ export default class Form extends Component {
       if (id === 'IsReported') {
         arr.push(
           <Box key={`${id}Box`} style={styles.header}>
-            <h3 style={{ fontFamily: 'sans-serif', color: 'white' }}>
+            <h3
+              style={{
+                fontFamily: 'sans-serif',
+                color: 'white',
+                marginLeft: 10,
+              }}
+            >
               Informationen zum Projekt
             </h3>
           </Box>
@@ -51,7 +56,9 @@ export default class Form extends Component {
     return (
       <Box style={styles.container}>
         <Box style={styles.header}>
-          <h3 style={{ fontFamily: 'sans-serif', color: 'white' }}>
+          <h3
+            style={{ fontFamily: 'sans-serif', color: 'white', marginLeft: 10 }}
+          >
             Ansprechpartnerin bzw. Ansprechpartner
           </h3>
         </Box>

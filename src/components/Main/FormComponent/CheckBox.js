@@ -16,6 +16,7 @@ export default class CheckBox extends Component {
     }
     this.props.setAllData(data);
   };
+
   checkbox = (values, published, key, data) => {
     let arr = [];
     values.forEach((item) => {
@@ -53,6 +54,7 @@ export default class CheckBox extends Component {
       </Box>
     );
   };
+
   render() {
     let { values, published, id, data } = this.props;
     let key = id;

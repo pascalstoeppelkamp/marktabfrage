@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { Button, Box } from '@material-ui/core';
 import { ChevronRightOutlined } from '@material-ui/icons';
 import ServerUtils from '../../../utils/ServerUtils';
-import Server from 'http-proxy';
+
 const styles = {
   container: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: '100%',
+  },
+  btnContainer: {
     height: 100,
     borderColor: 'lightgreen',
     borderStyle: 'solid',
@@ -13,13 +18,18 @@ const styles = {
     borderRadius: 10,
     overflow: 'hidden',
   },
-  box: {
-    flex: 1,
-    flexDirection: 'row',
+  btnBox: {
     display: 'flex',
+    flex: 1,
     flexWrap: 'wrap',
   },
+  chevron: {
+    flex: 0.1,
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
 };
+
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -45,45 +55,61 @@ export default class index extends Component {
   };
 
   getItems = (item) => {
+    let { Name, Email, CompanyContact } = item;
     return (
       <Button
-        style={styles.container}
+        style={styles.btnContainer}
         onClick={() => this.pressedContact(item)}
       >
-        <Box style={styles.box}>
-          <p style={{ flex: 1 }}>1{item.CompanyContact}</p>
-          <p style={{ flex: 1 }}>2{item.Email}</p>
-          <p style={{ flex: 1 }}>3{item.Name}</p>
-          <p style={{ flex: 1 }}>4{item.CompanyContact}</p>
-          <p style={{ flex: 1 }}>1{item.CompanyContact}</p>
-          <p style={{ flex: 1 }}>2{item.Email}</p>
-          <p style={{ flex: 1 }}>3{item.Name}</p>
-          <p style={{ flex: 1 }}>4{item.CompanyContact}</p>
+        <Box style={styles.btnBox}>
+          <p style={{ flex: 1 }}>{'Name: ' + Name}</p>
+          <p style={{ flex: 1 }}>{'Email: ' + Email}</p>
+          <p style={{ flex: 1 }}>{'Ansprechpartner: ' + CompanyContact}</p>
         </Box>
-        <ChevronRightOutlined />
+        <Box style={styles.chevron}>
+          <ChevronRightOutlined />
+        </Box>
       </Button>
     );
   };
+
+  pressedData = (data) => {
+    let arr = [];
+    for (const [key, value] of Object.entries(data)) {
+      if (typeof value !== 'object' && key !== '_id' && key !== '__v') {
+        arr.push({
+          name: key,
+          value: value,
+        });
+      }
+    }
+    return arr;
+  };
+
   render() {
     let { data, pressedData } = this.state;
     return (
-      <Box style={{ display: 'flex', flexDirection: 'row' }}>
+      <Box style={styles.container}>
         <Box
           style={{
             display: 'flex',
             flexDirection: 'column',
             flex: 1,
+            height: '100vh',
           }}
         >
           {data.map((item) => this.getItems(item))}
         </Box>
-        {pressedData ? (
-          <Box
-            style={{ flex: 1, margin: 20, width: '60%', overflow: 'hidden' }}
-          >
-            {JSON.stringify(pressedData)}
-          </Box>
-        ) : null}
+
+        <Box style={{ flex: 1, margin: 20, width: '60%', overflow: 'hidden' }}>
+          {pressedData
+            ? this.pressedData(pressedData).map((item) => (
+                <p>
+                  {item.name} : {item.value}
+                </p>
+              ))
+            : null}
+        </Box>
       </Box>
     );
   }

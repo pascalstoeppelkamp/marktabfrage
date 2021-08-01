@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Button, Modal } from '@material-ui/core';
+import { Box, Modal } from '@material-ui/core';
 import LoginBox from './LoginBox';
 const styles = {
   container: {
@@ -8,6 +8,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#00000090',
+    outline: 'none',
   },
   loginBox: {
     width: '31%',
@@ -28,7 +30,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <Modal open={true} onClose={this.handleClose}>
+      <Modal open={true}>
         <Box style={styles.container}>
           <Box border={1} style={styles.loginBox}>
             <LoginBox Login={this._Login} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
 import ServerUtils from '../../../utils/ServerUtils';
-import Test from '../TabHandler';
+import TabHandler from '../TabHandler';
 
 const styles = {
   email: {
@@ -35,6 +35,10 @@ export default class index extends Component {
     await this.ServerUtils.logout();
   };
 
+  _Login = () => {
+    this.props.pressedLogin();
+  };
+
   handleChange = (event, newValue) => {
     this.setState({ value: newValue });
   };
@@ -46,10 +50,9 @@ export default class index extends Component {
       <>
         <AppBar position="static" style={styles.appBar}>
           <Tabs style={{ flex: 1 }} value={value} onChange={this.handleChange}>
-            <Tab label="Informationen" />
-            {userRole === 'user' || userRole === 'admin' ? (
-              <Tab label="Formular" />
-            ) : null}
+            <Tab label="Einleitung" />
+            <Tab label="Formular" />
+            <Tab label="Anleitung" />
             {userRole === 'admin' ? <Tab label="Verwaltung" /> : null}
           </Tabs>
           {username ? (
@@ -75,9 +78,13 @@ export default class index extends Component {
                 <Button onClick={this._Logout}>Logout</Button>
               </Box>
             </Box>
-          ) : null}
+          ) : (
+            <Box style={styles.logoutBtn}>
+              <Button onClick={this._Login}>Login</Button>
+            </Box>
+          )}
         </AppBar>
-        <Test value={value} index={0} />
+        <TabHandler value={value} index={0} />
       </>
     );
   }

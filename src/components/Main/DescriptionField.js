@@ -9,6 +9,8 @@ const styles = {
     resize: 'none',
     fontFamily: 'sans-serif',
     fontSize: 15,
+    padding: 5,
+    paddingTop: 5,
   },
 };
 
