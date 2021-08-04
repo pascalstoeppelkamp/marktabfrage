@@ -33,7 +33,7 @@ export default class DropDown extends Component {
         style={{
           width: '100%',
           display: 'flex',
-          backgroundColor: published ? '#FFE4C470' : '#FFFFFF',
+          backgroundColor: "published ? '#FFE4C470' : '#FFFFFF',",
         }}
       >
         <Select

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
 import ServerUtils from '../../../utils/ServerUtils';
 import TabHandler from '../TabHandler';
-
 const styles = {
   email: {
     justifyContent: 'flex-start',
@@ -44,7 +43,7 @@ export default class index extends Component {
   };
 
   render() {
-    let { username, userRole } = this.props;
+    let { username, userRole, fnb } = this.props;
     let { value } = this.state;
     return (
       <>
@@ -53,7 +52,9 @@ export default class index extends Component {
             <Tab label="Einleitung" />
             <Tab label="Formular" />
             <Tab label="Anleitung" />
-            {userRole === 'admin' ? <Tab label="Verwaltung" /> : null}
+            {userRole === 'user' || userRole === 'admin' ? (
+              <Tab label="Verwaltung" />
+            ) : null}
           </Tabs>
           {username ? (
             <Box
@@ -67,7 +68,7 @@ export default class index extends Component {
                 <p
                   style={{
                     fontFamily: 'sans-serif',
-                    fontSize: 15,
+                    fontSize: 14,
                     margin: 10,
                   }}
                 >
@@ -84,7 +85,7 @@ export default class index extends Component {
             </Box>
           )}
         </AppBar>
-        <TabHandler value={value} index={0} />
+        <TabHandler value={value} index={0} fnb={fnb} />
       </>
     );
   }

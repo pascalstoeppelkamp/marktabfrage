@@ -18,12 +18,12 @@ const styles = {
   header: {
     backgroundColor: 'rgb(106, 172, 69)',
     color: 'white',
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
     padding: 1,
   },
   names: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
     padding: 1,
   },
@@ -265,7 +265,7 @@ export default class index extends Component {
             </Table>
           </TableContainer>
 
-          <TableContainer style={{ marginTop: 100 }}>
+          <TableContainer style={{ marginTop: 80, padding: 0 }}>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>

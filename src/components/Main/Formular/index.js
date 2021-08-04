@@ -37,7 +37,7 @@ export default class index extends Component {
     for (let item in allData) {
       data[allData[item].id] = allData[item].value;
     }
-
+    data.TableData = { ...tableData };
     await this.ServerUtils.sendData(data);
   };
 

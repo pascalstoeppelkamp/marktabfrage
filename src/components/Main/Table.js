@@ -7,9 +7,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { TextField } from '@material-ui/core';
 import rows from '../../data/TableData';
+
 const styles = {
   header: {
-    fontSize: 15,
+    fontSize: 14,
     color: 'black',
     fontWeight: 'bold',
     padding: 1,
@@ -24,7 +25,7 @@ const styles = {
     width: '100%',
   },
   names: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#f0f0f0',
     padding: 5,
   },
 };

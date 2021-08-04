@@ -6,7 +6,7 @@ import Introduction from '../Introduction';
 import Instruction from '../Instruction';
 export default class TabHandler extends Component {
   render() {
-    let { value } = this.props;
+    let { value, fnb } = this.props;
     return (
       <Box>
         {value === 0 ? <Introduction /> : null}
@@ -18,7 +18,7 @@ export default class TabHandler extends Component {
         {value === 2 ? <Instruction /> : null}
         {value === 3 ? (
           <Box>
-            <ShowAbfragen />
+            <ShowAbfragen fnb={fnb} />
           </Box>
         ) : null}
       </Box>

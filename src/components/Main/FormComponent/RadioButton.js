@@ -13,6 +13,7 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
+    backgroundColor: '#f0f0f0',
   },
 };
 
@@ -41,7 +42,14 @@ export default class RadioButton extends Component {
 
   _RadioButton = (value, data) => {
     value = value.target.value;
-    data.value = value;
+    if (data.value === 'ja') {
+      data.value = true;
+    } else if (data.value === 'nein') {
+      data.value = false;
+    } else {
+      data.value = value;
+    }
+
     this.props.setAllData(data);
   };
 
@@ -65,11 +73,7 @@ export default class RadioButton extends Component {
                 onClick={(value) => this._RadioButton(value, data)}
               />
             }
-            label={
-              <Typography style={{ fontSize: 15, padding: 10 }}>
-                {item}
-              </Typography>
-            }
+            label={<Typography style={{ fontSize: 14 }}>{item}</Typography>}
             labelPlacement="end"
             style={{ paddingLeft: 10, paddingTop: 1 }}
           />

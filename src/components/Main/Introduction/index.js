@@ -11,7 +11,7 @@ const styles = {
     color: 'rgb(106, 172, 69)',
   },
   names: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
     padding: 1,
   },

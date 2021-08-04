@@ -49,6 +49,11 @@ const styles = {
     top: '50%',
     zIndex: 1,
   },
+  close: {
+    position: 'absolute',
+    margin: 5,
+    alignSelf: 'flex-end',
+  },
 };
 
 export default class LoginBox extends Component {
@@ -83,6 +88,9 @@ export default class LoginBox extends Component {
     let { error, isLoading } = this.state;
     return (
       <Box style={styles.container}>
+        <Button style={styles.close} onClick={() => this.props.closeModal()}>
+          X
+        </Button>
         {isLoading ? (
           <CircularProgress disableShrink style={styles.progressBar} />
         ) : null}

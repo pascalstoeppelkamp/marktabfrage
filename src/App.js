@@ -11,6 +11,7 @@ export default class App extends Component {
     this.ServerUtils = new ServerUtils();
     this.state = {
       userRole: null,
+      fnb: null,
     };
   }
 
@@ -19,24 +20,32 @@ export default class App extends Component {
       username: data.username,
       userRole: data.role,
       loginModal: false,
+      fnb: data.fnb,
     });
   };
 
   render() {
-    let { loginModal, username, userRole } = this.state;
+    let { loginModal, username, userRole, fnb } = this.state;
     return (
       <Box
         style={{
-          height: '100vh',
+          height: '100%',
           width: '100%',
+          backgroundColor: '#f0f0f0',
         }}
       >
         <HeaderLogos />
-        {loginModal ? <LoginModal _Login={this._Login} /> : null}
+        {loginModal ? (
+          <LoginModal
+            _Login={this._Login}
+            closeModal={() => this.setState({ loginModal: false })}
+          />
+        ) : null}
         <Pages
           pressedLogin={() => this.setState({ loginModal: true })}
           username={username}
           userRole={userRole}
+          fnb={fnb}
         />
       </Box>
     );

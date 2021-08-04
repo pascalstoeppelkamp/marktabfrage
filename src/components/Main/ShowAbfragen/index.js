@@ -9,15 +9,6 @@ const styles = {
     flexDirection: 'row',
     height: '100%',
   },
-  btnContainer: {
-    height: 100,
-    borderColor: 'lightgreen',
-    borderStyle: 'solid',
-    margin: 20,
-    borderWidth: 0.5,
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
   btnBox: {
     display: 'flex',
     flex: 1,
@@ -37,29 +28,55 @@ export default class index extends Component {
     this.state = {
       data: [],
       pressedData: null,
+      btnContainerBG: [],
     };
   }
   componentDidMount() {
-    this.showData();
+    let { fnb } = this.props;
+    this.showData(fnb);
   }
 
-  async showData() {
-    const response = await this.ServerUtils.showAbfragen();
+  showData = async (fnb) => {
+    let body = {
+      FNB: fnb,
+    };
+    const response = await this.ServerUtils.showAbfragen(body);
     if (response.success) {
       this.setState({ data: response.data });
     }
-  }
+  };
 
-  pressedContact = (item) => {
+  pressedContact = (item, index) => {
+    this.changeColor(index);
     this.setState({ pressedData: item });
   };
 
-  getItems = (item) => {
+  changeColor = (index) => {
+    let btnContainerBG = {};
+    let clicked = 'lightgrey';
+    let unPressed = 'white';
+    btnContainerBG[index] === clicked
+      ? (btnContainerBG[index] = unPressed)
+      : (btnContainerBG[index] = clicked);
+    this.setState({ btnContainerBG });
+  };
+
+  getItems = (item, index) => {
+    let { btnContainerBG } = this.state;
     let { Name, Email, CompanyContact } = item;
     return (
       <Button
-        style={styles.btnContainer}
-        onClick={() => this.pressedContact(item)}
+        style={{
+          height: 100,
+          borderColor: 'lightgreen',
+          borderStyle: 'solid',
+          backgroundColor: btnContainerBG[index],
+          margin: 20,
+          borderWidth: 0.5,
+          borderRadius: 10,
+          overflow: 'hidden',
+        }}
+        onClick={() => this.pressedContact(item, index)}
       >
         <Box style={styles.btnBox}>
           <p style={{ flex: 1 }}>{'Name: ' + Name}</p>
@@ -76,6 +93,15 @@ export default class index extends Component {
   pressedData = (data) => {
     let arr = [];
     for (const [key, value] of Object.entries(data)) {
+      if (typeof value === 'object') {
+        for (const [tkey, val] of Object.entries(value)) {
+          arr.push({
+            name: tkey,
+            value: JSON.stringify(val),
+          });
+        }
+      }
+
       if (typeof value !== 'object' && key !== '_id' && key !== '__v') {
         arr.push({
           name: key,
@@ -98,7 +124,7 @@ export default class index extends Component {
             height: '100vh',
           }}
         >
-          {data.map((item) => this.getItems(item))}
+          {data.map((item, index) => this.getItems(item, index))}
         </Box>
 
         <Box style={{ flex: 1, margin: 20, width: '60%', overflow: 'hidden' }}>

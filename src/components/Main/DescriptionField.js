@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 const styles = {
   input: {
@@ -8,7 +8,7 @@ const styles = {
     textAlignVertical: 'top',
     resize: 'none',
     fontFamily: 'sans-serif',
-    fontSize: 15,
+    fontSize: 14,
     padding: 5,
     paddingTop: 5,
   },

@@ -36,8 +36,15 @@ class ServerUtils {
       .then((data) => console.log(data));
   };
 
-  showAbfragen = async () => {
-    let data = await fetch(this.url + 'eintraege');
+  showAbfragen = async (body) => {
+    let data = await fetch(this.url + 'eintraege/eintrag', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     data = data.json();
     return data;
   };

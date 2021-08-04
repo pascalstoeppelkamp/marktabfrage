@@ -32,7 +32,7 @@ export default class CheckBox extends Component {
               onClick={(value) => this._SetCheckBox(value, data)}
             />
           }
-          label={<Typography style={{ fontSize: 15 }}>{item}</Typography>}
+          label={<Typography style={{ fontSize: 14 }}>{item}</Typography>}
           labelPlacement="end"
           style={{ flex: 1, paddingLeft: 5, paddingTop: 5 }}
         />
