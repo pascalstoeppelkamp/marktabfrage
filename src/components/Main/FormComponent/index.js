@@ -17,6 +17,8 @@ const styles = {
     display: 'flex',
     alignItems: 'flex-end',
     fontFamily: 'sans-serif',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   textfield: {
     flex: 1,

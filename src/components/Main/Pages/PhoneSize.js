@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Box } from '@material-ui/core';
+import { Box, ClickAwayListener } from '@material-ui/core';
 
 const styles = {
   email: {
@@ -41,29 +41,42 @@ class SimpleMenu extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  handleClickAway = () => {
+    this.setState({ anchorEl: null });
+  };
   render() {
     const { anchorEl } = this.state;
-    let { username, userRole, fnb, value, phoneSize } = this.props;
+    let { username, userRole } = this.props;
 
     return (
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          backgroundColor: 'rgb(106, 172, 69)',
-          maxHeight: 50,
+          backgroundColor: '#f0f0f0',
+          maxHeight: 80,
+          boxShadow:
+            '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
         }}
       >
-        <IconButton
+        <ClickAwayListener onClickAway={this.handleClickAway}>
+          <IconButton
+            style={{
+              backgroundColor: 'rgb(106, 172, 69)',
+              padding: 10,
+              margin: 10,
+            }}
+            onClick={this.handleClick}
+            children={<List />}
+          />
+        </ClickAwayListener>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
           style={{
-            backgroundColor: 'rgb(106, 172, 69)',
-            padding: 10,
-            margin: 10,
+            top: 51,
           }}
-          onClick={this.handleClick}
-          children={<List />}
-        />
-        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} style={{ top: 51 }}>
+        >
           <MenuItem
             style={{
               margin: 1,
@@ -98,6 +111,7 @@ class SimpleMenu extends React.Component {
             </MenuItem>
           ) : null}
         </Menu>
+
         {username ? (
           <Box
             style={{
@@ -112,7 +126,7 @@ class SimpleMenu extends React.Component {
                   fontFamily: 'sans-serif',
                   fontSize: 14,
                   margin: 10,
-                  color: 'white',
+                  color: 'rgb(106, 172, 69)',
                 }}
               >
                 {username}

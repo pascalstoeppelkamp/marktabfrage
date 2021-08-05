@@ -5,7 +5,9 @@ import TableRow from '@material-ui/core/TableRow';
 const styles = {
   text: {
     fontSize: 18,
+    width: '80%',
     fontFamily: 'sans-serif',
+    padding: 10,
   },
   coloredHeader: {
     color: 'rgb(106, 172, 69)',

@@ -11,6 +11,8 @@ const styles = {
   text: {
     fontSize: 18,
     fontFamily: 'sans-serif',
+    width: '80%',
+    padding: 10,
   },
   coloredHeader: {
     color: 'rgb(106, 172, 69)',
@@ -130,31 +132,31 @@ export default class index extends Component {
           <h3 style={styles.coloredHeader}>
             Ansprechpartnerin bzw. Ansprechpartner
           </h3>
-          <TableContainer style={{ padding: 0 }}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell style={styles.header}>
-                    Fernleitungsnetzbetreiber
-                  </TableCell>
-                  <TableCell style={styles.header}>
-                    Ansprechpartnerin bzw. Ansprechpartner
-                  </TableCell>
-                  <TableCell style={styles.header}>E-Mail</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((item) => (
-                  <TableRow style={{ padding: 0 }} key={index}>
-                    <TableCell style={styles.names}>{item.fnb}</TableCell>
-                    <TableCell style={styles.names}>{item.partner}</TableCell>
-                    <TableCell style={styles.names}>{item.email}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
         </p>
+        <TableContainer style={{ padding: 0, width: '100%' }}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell style={styles.header}>
+                  Fernleitungsnetzbetreiber
+                </TableCell>
+                <TableCell style={styles.header}>
+                  Ansprechpartnerin bzw. Ansprechpartner
+                </TableCell>
+                <TableCell style={styles.header}>E-Mail</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((item) => (
+                <TableRow style={{ padding: 0 }} key={index}>
+                  <TableCell style={styles.names}>{item.fnb}</TableCell>
+                  <TableCell style={styles.names}>{item.partner}</TableCell>
+                  <TableCell style={styles.names}>{item.email}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
         <p style={styles.text}>
           <h3 style={styles.coloredHeader}>
             Allgemeine Hinweise für Projektmeldungen
@@ -234,98 +236,93 @@ export default class index extends Component {
         </p>
         <p style={styles.text}>
           <h3 style={styles.coloredHeader}>Ausfüllhinweise</h3>
-          <TableContainer style={{ padding: 0 }}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell style={styles.header}>Feld</TableCell>
-                  <TableCell style={styles.header}>
-                    Hinweise für Projektmeldungen (inkl. der konkreten Projekte
-                    der Verteilernetzbetreiber)
-                  </TableCell>
-                  <TableCell style={styles.header}>
-                    Hinweise für Meldungen der Verteilernetzbetreiber
-                    (voraussichtlicher Bedarf)
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {CompletionInstruction.map((item) => (
-                  <TableRow style={{ padding: 0 }} key={index}>
-                    <TableCell style={styles.names}>{item.field}</TableCell>
-                    <TableCell style={styles.names}>
-                      {item.hintProject}
-                    </TableCell>
-                    <TableCell style={styles.names}>
-                      {item.hintReport}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-
-          <TableContainer style={{ marginTop: 80, padding: 0 }}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell style={styles.header}>Tabellenreihe</TableCell>
-                  <TableCell style={styles.header}>
-                    Hinweise für Projektmeldungen (inkl. der konkreten Projekte
-                    der Verteilernetzbetreiber)
-                  </TableCell>
-                  <TableCell style={styles.header}>
-                    Hinweise für Meldungen der Verteilernetzbetreiber
-                    (voraussichtlicher Bedarf)
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow style={{ padding: 0 }} key={index}>
-                  <TableCell style={styles.names}>
-                    Einspeiseleistung MWh/hth
-                  </TableCell>
-                  <TableCell style={styles.names} rowSpan={4}>
-                    Angabe der Gasanschlussleistung und der Gasmenge
-                    (Brennwertangaben) für die komplette Datenreihe der Jahre
-                    2022 bis 2032 sowie ein Ausblick für die Jahre 2040 und 2050
-                  </TableCell>
-                  <TableCell style={styles.names} rowSpan={4}>
-                    Angabe der Gasanschlussleistung und der Gasmenge
-                    (Brennwertangaben) für die Jahre 2032, 2040 und 2050.
-                  </TableCell>
-                </TableRow>
-                <TableRow style={{ padding: 0 }} key={index}>
-                  <TableCell style={styles.names}>
-                    Einspeisemenge pro Jahr MWhth
-                  </TableCell>
-                </TableRow>
-                <TableRow style={{ padding: 0 }} key={index}>
-                  <TableCell style={styles.names}>
-                    Ausspeiseleistung MWh/hth
-                  </TableCell>
-                </TableRow>
-                <TableRow style={{ padding: 0 }} key={index}>
-                  <TableCell style={styles.names}>
-                    Ausspeisemenge pro Jahr MWhth
-                  </TableCell>
-                </TableRow>
-                <TableRow style={{ padding: 0 }} key={index}>
-                  <TableCell style={styles.names}>
-                    Elektrische Leistung der Anlage MWh/hel
-                  </TableCell>
-                  <TableCell style={styles.names}>
-                    Angabe der Gasanschlussleistung und der Gasmenge
-                    (Brennwertangaben) für die Jahre 2032, 2040 und 2050.
-                  </TableCell>
-                  <TableCell style={styles.names}>
-                    Keine Angabe erforderlich.
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
         </p>
+        <TableContainer style={{ padding: 0 }}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell style={styles.header}>Feld</TableCell>
+                <TableCell style={styles.header}>
+                  Hinweise für Projektmeldungen (inkl. der konkreten Projekte
+                  der Verteilernetzbetreiber)
+                </TableCell>
+                <TableCell style={styles.header}>
+                  Hinweise für Meldungen der Verteilernetzbetreiber
+                  (voraussichtlicher Bedarf)
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {CompletionInstruction.map((item) => (
+                <TableRow style={{ padding: 0 }} key={index}>
+                  <TableCell style={styles.names}>{item.field}</TableCell>
+                  <TableCell style={styles.names}>{item.hintProject}</TableCell>
+                  <TableCell style={styles.names}>{item.hintReport}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TableContainer style={{ marginTop: 80, padding: 0 }}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell style={styles.header}>Tabellenreihe</TableCell>
+                <TableCell style={styles.header}>
+                  Hinweise für Projektmeldungen (inkl. der konkreten Projekte
+                  der Verteilernetzbetreiber)
+                </TableCell>
+                <TableCell style={styles.header}>
+                  Hinweise für Meldungen der Verteilernetzbetreiber
+                  (voraussichtlicher Bedarf)
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Einspeiseleistung MWh/hth
+                </TableCell>
+                <TableCell style={styles.names} rowSpan={4}>
+                  Angabe der Gasanschlussleistung und der Gasmenge
+                  (Brennwertangaben) für die komplette Datenreihe der Jahre 2022
+                  bis 2032 sowie ein Ausblick für die Jahre 2040 und 2050
+                </TableCell>
+                <TableCell style={styles.names} rowSpan={4}>
+                  Angabe der Gasanschlussleistung und der Gasmenge
+                  (Brennwertangaben) für die Jahre 2032, 2040 und 2050.
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Einspeisemenge pro Jahr MWhth
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Ausspeiseleistung MWh/hth
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Ausspeisemenge pro Jahr MWhth
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Elektrische Leistung der Anlage MWh/hel
+                </TableCell>
+                <TableCell style={styles.names}>
+                  Angabe der Gasanschlussleistung und der Gasmenge
+                  (Brennwertangaben) für die Jahre 2032, 2040 und 2050.
+                </TableCell>
+                <TableCell style={styles.names}>
+                  Keine Angabe erforderlich.
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     );
   }

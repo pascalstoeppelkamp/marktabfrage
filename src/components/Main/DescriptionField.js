@@ -40,7 +40,13 @@ export default class Test extends React.Component {
   render() {
     let { ProjectDescription } = this.state;
     return (
-      <Box style={{ height: '100%', width: '100%', display: 'flex' }}>
+      <Box
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+        }}
+      >
         <textarea
           style={styles.input}
           value={ProjectDescription.value}

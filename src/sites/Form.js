@@ -10,7 +10,7 @@ const styles = {
   },
   header: {
     backgroundColor: 'rgb(106, 172, 69)',
-    height: 45,
+    height: 55,
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
@@ -34,7 +34,8 @@ export default class Form extends Component {
               style={{
                 fontFamily: 'sans-serif',
                 color: 'white',
-                marginLeft: 10,
+                margin: 10,
+                marginLeft: 20,
               }}
             >
               Informationen zum Projekt
@@ -57,7 +58,12 @@ export default class Form extends Component {
       <Box style={styles.container}>
         <Box style={styles.header}>
           <h3
-            style={{ fontFamily: 'sans-serif', color: 'white', marginLeft: 10 }}
+            style={{
+              fontFamily: 'sans-serif',
+              color: 'white',
+              margin: 10,
+              marginLeft: 20,
+            }}
           >
             Ansprechpartnerin bzw. Ansprechpartner
           </h3>

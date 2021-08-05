@@ -12,7 +12,8 @@ const styles = {
     outline: 'none',
   },
   loginBox: {
-    width: '31%',
+    width: 444,
+    margin: 30,
     height: '56%',
     borderRadius: 6,
     backgroundColor: '#f0f0f0',

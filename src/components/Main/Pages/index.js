@@ -79,9 +79,6 @@ export default class index extends Component {
           <PhoneSize
             username={username}
             userRole={userRole}
-            fnb={fnb}
-            value={value}
-            phoneSize={phoneSize}
             handleChange={this.handleChangePhone}
             logout={this._Logout}
             login={this._Login}
@@ -90,9 +87,7 @@ export default class index extends Component {
           <ComputerSize
             username={username}
             userRole={userRole}
-            fnb={fnb}
             value={value}
-            phoneSize={phoneSize}
             handleChange={this.handleChange}
             logout={this._Logout}
             login={this._Login}

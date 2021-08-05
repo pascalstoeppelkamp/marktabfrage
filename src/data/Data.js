@@ -163,7 +163,7 @@ const fields = {
     value: {},
   },
   InquiryParallel: {
-    label: 'Anfrage parallel gestellt bei:',
+    label: 'Anfrage parallel gestellt bei',
     type: 'Checkbox',
     published: true,
     values: [
@@ -183,7 +183,7 @@ const fields = {
     value: {},
   },
   electrolysers: {
-    label: 'Bei Elektrolyseuren, Angaben zum Stromanschluss/Strombezug:',
+    label: 'Bei Elektrolyseuren, Angaben zum Stromanschluss/Strombezug',
     type: 'Textfield',
     published: false,
     id: 'electrolysers',

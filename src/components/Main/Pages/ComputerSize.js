@@ -20,16 +20,24 @@ const styles = {
     justifyContent: 'center',
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: 'rgb(106, 172, 69)',
+    backgroundColor: '#f0f0f0',
+    height: 80,
+    marginBottom: 50,
+    //backgroundColor: 'rgb(106, 172, 69)',
   },
 };
 
 export default class computerSize extends Component {
   render() {
-    let { username, userRole, fnb, value, phoneSize } = this.props;
+    let { username, userRole, value } = this.props;
     return (
-      <AppBar position="static" style={styles.appBar}>
+      <AppBar position="sticky" style={styles.appBar}>
         <Tabs
+          TabIndicatorProps={{
+            style: {
+              display: 'none',
+            },
+          }}
           variant="scrollable"
           style={{
             width: '100%',
@@ -39,12 +47,36 @@ export default class computerSize extends Component {
           value={value}
           onChange={this.props.handleChange}
         >
-          <Tab label="Einleitung" />
-          <Tab label="Formular" />
-          <Tab label="Anleitung" />
+          <Tab
+            label={
+              <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
+                Einleitung
+              </p>
+            }
+          />
+          <Tab
+            label={
+              <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
+                Formular
+              </p>
+            }
+          />
+          <Tab
+            label={
+              <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
+                Anleitung
+              </p>
+            }
+          />
 
           {userRole === 'user' || userRole === 'admin' ? (
-            <Tab label="Verwaltung" />
+            <Tab
+              label={
+                <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
+                  Verwaltung
+                </p>
+              }
+            />
           ) : null}
         </Tabs>
         {username ? (
@@ -53,6 +85,7 @@ export default class computerSize extends Component {
               justifyContent: 'space-between',
               alignItems: 'center',
               display: 'flex',
+              color: 'rgb(106, 172, 69)',
             }}
           >
             <Box style={styles.email}>
