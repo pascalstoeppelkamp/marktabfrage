@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
 import ServerUtils from '../../../utils/ServerUtils';
 import TabHandler from '../TabHandler';
+import ComputerSize from './ComputerSize';
+import PhoneSize from './PhoneSize';
 const styles = {
   email: {
     justifyContent: 'flex-start',
@@ -15,6 +17,8 @@ const styles = {
     display: 'flex',
   },
   appBar: {
+    alignItems: 'center',
+    justifyContent: 'center',
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: 'rgb(106, 172, 69)',
@@ -27,8 +31,28 @@ export default class index extends Component {
     this.ServerUtils = new ServerUtils();
     this.state = {
       value: 0,
+      phoneSize: false,
     };
+    window.addEventListener('resize', this.update);
   }
+
+  componentDidMount() {
+    this.update();
+  }
+
+  update = () => {
+    this.checkIfPhone(window.innerWidth);
+  };
+
+  checkIfPhone = (size) => {
+    let { phoneSize } = this.state;
+    if (size < 699) {
+      phoneSize = true;
+    } else {
+      phoneSize = false;
+    }
+    this.setState({ phoneSize });
+  };
 
   _Logout = async () => {
     await this.ServerUtils.logout();
@@ -42,49 +66,39 @@ export default class index extends Component {
     this.setState({ value: newValue });
   };
 
+  handleChangePhone = (value) => {
+    this.setState({ value });
+  };
   render() {
     let { username, userRole, fnb } = this.props;
-    let { value } = this.state;
+    let { value, phoneSize } = this.state;
+
     return (
       <>
-        <AppBar position="static" style={styles.appBar}>
-          <Tabs style={{ flex: 1 }} value={value} onChange={this.handleChange}>
-            <Tab label="Einleitung" />
-            <Tab label="Formular" />
-            <Tab label="Anleitung" />
-            {userRole === 'user' || userRole === 'admin' ? (
-              <Tab label="Verwaltung" />
-            ) : null}
-          </Tabs>
-          {username ? (
-            <Box
-              style={{
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                display: 'flex',
-              }}
-            >
-              <Box style={styles.email}>
-                <p
-                  style={{
-                    fontFamily: 'sans-serif',
-                    fontSize: 14,
-                    margin: 10,
-                  }}
-                >
-                  {username}
-                </p>
-              </Box>
-              <Box style={styles.logoutBtn}>
-                <Button onClick={this._Logout}>Logout</Button>
-              </Box>
-            </Box>
-          ) : (
-            <Box style={styles.logoutBtn}>
-              <Button onClick={this._Login}>Login</Button>
-            </Box>
-          )}
-        </AppBar>
+        {phoneSize ? (
+          <PhoneSize
+            username={username}
+            userRole={userRole}
+            fnb={fnb}
+            value={value}
+            phoneSize={phoneSize}
+            handleChange={this.handleChangePhone}
+            logout={this._Logout}
+            login={this._Login}
+          />
+        ) : (
+          <ComputerSize
+            username={username}
+            userRole={userRole}
+            fnb={fnb}
+            value={value}
+            phoneSize={phoneSize}
+            handleChange={this.handleChange}
+            logout={this._Logout}
+            login={this._Login}
+          />
+        )}
+
         <TabHandler value={value} index={0} fnb={fnb} />
       </>
     );
