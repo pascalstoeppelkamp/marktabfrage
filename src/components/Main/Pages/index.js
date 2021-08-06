@@ -1,29 +1,8 @@
 import React, { Component } from 'react';
-import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
 import ServerUtils from '../../../utils/ServerUtils';
 import TabHandler from '../TabHandler';
 import ComputerSize from './ComputerSize';
 import PhoneSize from './PhoneSize';
-const styles = {
-  email: {
-    justifyContent: 'flex-start',
-    flex: 1,
-    display: 'flex',
-    alignItems: 'flex-end',
-  },
-  logoutBtn: {
-    justifyContent: 'flex-end',
-    flex: 1,
-    display: 'flex',
-  },
-  appBar: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    backgroundColor: 'rgb(106, 172, 69)',
-  },
-};
 
 export default class index extends Component {
   constructor(props) {

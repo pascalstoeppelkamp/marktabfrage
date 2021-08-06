@@ -74,40 +74,58 @@ class SimpleMenu extends React.Component {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           style={{
-            top: 51,
+            marginTop: 75,
+            height: '100%',
           }}
         >
           <MenuItem
             style={{
               margin: 1,
-              backgroundColor: 'rgb(106, 172, 69)',
+              backgroundColor: '#f0f0f0',
+              boxShadow:
+                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
             }}
             value={0}
             onClick={this.handleClose}
           >
-            Einleitung
+            <p style={{ color: 'rgb(106, 172, 69)' }}>Einleitung</p>
           </MenuItem>
           <MenuItem
-            style={{ margin: 1, backgroundColor: 'rgb(106, 172, 69)' }}
+            style={{
+              margin: 1,
+              backgroundColor: '#f0f0f0',
+              boxShadow:
+                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+            }}
             value={1}
             onClick={this.handleClose}
           >
-            Formular
+            <p style={{ color: 'rgb(106, 172, 69)' }}>Formular</p>
           </MenuItem>
           <MenuItem
-            style={{ margin: 1, backgroundColor: 'rgb(106, 172, 69)' }}
+            style={{
+              margin: 1,
+              backgroundColor: '#f0f0f0',
+              boxShadow:
+                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+            }}
             value={2}
             onClick={this.handleClose}
           >
-            Anleitung
+            <p style={{ color: 'rgb(106, 172, 69)' }}>Anleitung</p>
           </MenuItem>
           {userRole === 'user' || userRole === 'admin' ? (
             <MenuItem
-              style={{ margin: 1, backgroundColor: 'rgb(106, 172, 69)' }}
+              style={{
+                margin: 1,
+                backgroundColor: '#f0f0f0',
+                boxShadow:
+                  '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+              }}
               value={3}
               onClick={this.handleClose}
             >
-              Verwaltung
+              <p style={{ color: 'rgb(106, 172, 69)' }}>Verwaltung</p>
             </MenuItem>
           ) : null}
         </Menu>
