@@ -168,11 +168,11 @@ export default class index extends Component {
         <h3 style={styles.coloredHeader}>
           Allgemeine Hinweise für Projektmeldungen
         </h3>
-        <p style={styles.text}>
+        <p style={styles.text} wordWrap="break-down">
           Bitte beachten Sie, dass eine Berücksichtigung der in der Marktabfrage
           gemeldeten Wasserstoff-/Grüngasprojekte im Szenariorahmen zum NEP Gas
           2022-2032 nur erfolgt, wenn die dafür erforderlichen Kriterien erfüllt
-          sind (https://www.fnb-gas.de/netzentwicklungsplan/szenariorahmen/
+          sind (https://www.fnb-gas.de /netzentwicklungsplan/szenariorahmen/
           szenariorahmen-2022). Für den NEP Gas 2022–2032 sind letztendlich die
           Festlegungen der BNetzA in der Bestätigung des Szenariorahmens
           ausschlaggebend.
