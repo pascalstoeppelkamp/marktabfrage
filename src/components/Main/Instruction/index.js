@@ -108,12 +108,12 @@ const styles = {
     color: 'white',
     fontSize: 14,
     fontWeight: 'bold',
-    padding: 1,
+    padding: 10,
   },
   names: {
     fontSize: 14,
     fontWeight: 'bold',
-    padding: 1,
+    padding: 10,
   },
 };
 export default class index extends Component {
@@ -139,29 +139,25 @@ export default class index extends Component {
             <TableHead>
               <TableRow>
                 <TableCell style={styles.header}>
-                  <p style={{ margin: 5 }}>Fernleitungsnetzbetreiber</p>
+                  Fernleitungsnetzbetreiber
                 </TableCell>
                 <TableCell style={styles.header}>
-                  <p style={{ margin: 5 }}>
-                    Ansprechpartnerin bzw. Ansprechpartner
-                  </p>
+                  Ansprechpartnerin bzw. Ansprechpartner
                 </TableCell>
-                <TableCell style={styles.header}>
-                  <p style={{ margin: 5 }}>E-Mail</p>
-                </TableCell>
+                <TableCell style={styles.header}>E-Mail</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((item, index) => (
                 <TableRow style={{ padding: 0 }} key={index}>
                   <TableCell key={item.fnb} style={styles.names}>
-                    <p style={{ margin: 5 }}>{item.fnb}</p>
+                    {item.fnb}
                   </TableCell>
                   <TableCell key={item.partner} style={styles.names}>
-                    <p style={{ margin: 5 }}>{item.partner}</p>
+                    {item.partner}
                   </TableCell>
                   <TableCell key={item.email} style={styles.names}>
-                    <p style={{ margin: 5 }}>{item.email}</p>
+                    {item.email}
                   </TableCell>
                 </TableRow>
               ))}

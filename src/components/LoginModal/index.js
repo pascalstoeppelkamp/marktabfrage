@@ -31,7 +31,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <Modal open={true}>
+      <Modal open={true} onClose={() => this.props.closeModal()}>
         <Box style={styles.container}>
           <Box border={1} style={styles.loginBox}>
             <LoginBox

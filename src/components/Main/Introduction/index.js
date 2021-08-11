@@ -61,6 +61,7 @@ const styles = {
     fontSize: 14,
     fontWeight: 'bold',
     padding: 1,
+    flex: 1,
   },
   h4: {
     fontSize: 18,
@@ -113,11 +114,14 @@ export default class index extends Component {
           <Table aria-label="simple table">
             <TableBody>
               {rows.map((item, index) => (
-                <TableRow key={index} style={{ padding: 0 }}>
-                  <TableCell style={styles.names}>
+                <TableRow
+                  key={index}
+                  style={{ padding: 0, display: 'flex', flexDirection: 'row' }}
+                >
+                  <TableCell align="left" style={styles.names}>
                     <p>{item.name}</p>
                   </TableCell>
-                  <TableCell style={styles.names}>
+                  <TableCell align="left" style={styles.names}>
                     <p>{item.email}</p>
                   </TableCell>
                 </TableRow>
