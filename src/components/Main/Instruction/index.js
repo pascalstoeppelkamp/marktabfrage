@@ -265,6 +265,73 @@ export default class index extends Component {
             </TableBody>
           </Table>
         </TableContainer>
+        <TableContainer style={{ padding: 0, marginTop: 30 }}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell style={styles.header}>
+                  <p style={{ margin: 5 }}>Feld</p>
+                </TableCell>
+                <TableCell style={styles.header}>
+                  <p style={{ margin: 5 }}>
+                    Hinweise für Projektmeldungen (inkl. der konkreten Projekte
+                    der Verteilernetzbetreiber)
+                  </p>
+                </TableCell>
+                <TableCell style={styles.header}>
+                  <p style={{ margin: 5 }}>
+                    Hinweise für Meldungen der Verteilernetzbetreiber
+                    (voraussichtlicher Bedarf)
+                  </p>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Einspeiseleistung MWh/hth
+                </TableCell>
+                <TableCell style={styles.names} rowSpan={4}>
+                  Angabe der Gasanschlussleistung und der Gasmenge
+                  (Brennwertangaben) für die komplette Datenreihe der Jahre 2022
+                  bis 2032 sowie ein Ausblick für die Jahre 2040 und 2050
+                </TableCell>
+                <TableCell style={styles.names} rowSpan={4}>
+                  Angabe der Gasanschlussleistung und der Gasmenge
+                  (Brennwertangaben) für die Jahre 2032, 2040 und 2050.
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Einspeisemenge pro Jahr MWhth
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Ausspeiseleistung MWh/hth
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Ausspeisemenge pro Jahr MWhth
+                </TableCell>
+              </TableRow>
+              <TableRow style={{ padding: 0 }} key={index}>
+                <TableCell style={styles.names}>
+                  Elektrische Leistung der Anlage MWh/hel
+                </TableCell>
+                <TableCell style={styles.names}>
+                  Angabe der elektrischen Leistung der Elektrolyseanlage für die
+                  komplette Datenreihe der Jahre 2022 bis 2032 sowie ein
+                  Ausblick für die Jahre 2040 und 2050
+                </TableCell>
+                <TableCell style={styles.names}>
+                  Keine Angabe erforderlich.
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     );
   }
