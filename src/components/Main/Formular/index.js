@@ -30,6 +30,7 @@ export default class index extends Component {
       tableData: {},
       userToken: null,
       userRole: null,
+      errMessage: null,
     };
   }
   fetchData = async (allData, tableData) => {
@@ -38,7 +39,13 @@ export default class index extends Component {
       data[allData[item].id] = allData[item].value;
     }
     data.TableData = { ...tableData };
-    await this.ServerUtils.sendData(data);
+    let sendData = await this.ServerUtils.sendData(data);
+    if (!sendData.success) {
+      let err = sendData.error.split(',');
+      this.setState({ errMessage: err });
+    } else {
+      this.setState({ errMessage: null });
+    }
   };
 
   setAllData = (data) => {
@@ -62,8 +69,18 @@ export default class index extends Component {
       userRole: data.role,
     });
   };
+
+  setErrMsg = (err) => {
+    return err.map((item) => (
+      <p style={{ color: 'red' }}>
+        {item}
+        {'\n'}
+      </p>
+    ));
+  };
+
   render() {
-    let { allData, tableData } = this.state;
+    let { allData, tableData, errMessage } = this.state;
     return (
       <>
         <Header />
@@ -89,6 +106,7 @@ export default class index extends Component {
         >
           Senden
         </Button>
+        {errMessage ? this.setErrMsg(errMessage) : null}
       </>
     );
   }

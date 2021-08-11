@@ -42,14 +42,14 @@ export default class RadioButton extends Component {
 
   _RadioButton = (value, data) => {
     value = value.target.value;
-    if (data.value === 'ja') {
+
+    if (value === 'ja') {
       data.value = true;
-    } else if (data.value === 'nein') {
+    } else if (value === 'nein') {
       data.value = false;
     } else {
       data.value = value;
     }
-
     this.props.setAllData(data);
   };
 
@@ -63,7 +63,13 @@ export default class RadioButton extends Component {
 
     values.forEach((item) => {
       arr.push(
-        <Box style={{ flex: 1 }} key={item}>
+        <Box
+          style={{
+            flex: 1,
+            backgroundColor: published ? '#FFE4C470' : '#f0f0f0f0',
+          }}
+          key={item}
+        >
           <FormControlLabel
             value={item}
             control={

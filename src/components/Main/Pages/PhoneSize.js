@@ -25,6 +25,12 @@ const styles = {
     flexDirection: 'row',
     backgroundColor: 'rgb(106, 172, 69)',
   },
+  menuItem: {
+    margin: 1,
+    backgroundColor: '#f0f0f0',
+    boxShadow:
+      '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+  },
 };
 
 class SimpleMenu extends React.Component {
@@ -37,7 +43,11 @@ class SimpleMenu extends React.Component {
   };
 
   handleClose = (event) => {
-    this.props.handleChange(event.target.value);
+    let val = event.target.value;
+    if (!val) {
+      val = 0;
+    }
+    this.props.handleChange(val);
     this.setState({ anchorEl: null });
   };
 
@@ -79,36 +89,24 @@ class SimpleMenu extends React.Component {
           }}
         >
           <MenuItem
-            style={{
-              margin: 1,
-              backgroundColor: '#f0f0f0',
-              boxShadow:
-                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
-            }}
+            key={'0'}
+            style={styles.menuItem}
             value={0}
             onClick={this.handleClose}
           >
             <p style={{ color: 'rgb(106, 172, 69)' }}>Einleitung</p>
           </MenuItem>
           <MenuItem
-            style={{
-              margin: 1,
-              backgroundColor: '#f0f0f0',
-              boxShadow:
-                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
-            }}
+            key={'1'}
+            style={styles.menuItem}
             value={1}
             onClick={this.handleClose}
           >
             <p style={{ color: 'rgb(106, 172, 69)' }}>Formular</p>
           </MenuItem>
           <MenuItem
-            style={{
-              margin: 1,
-              backgroundColor: '#f0f0f0',
-              boxShadow:
-                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
-            }}
+            key={'2'}
+            style={styles.menuItem}
             value={2}
             onClick={this.handleClose}
           >
@@ -116,12 +114,8 @@ class SimpleMenu extends React.Component {
           </MenuItem>
           {userRole === 'user' || userRole === 'admin' ? (
             <MenuItem
-              style={{
-                margin: 1,
-                backgroundColor: '#f0f0f0',
-                boxShadow:
-                  '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
-              }}
+              key={'3'}
+              style={styles.menuItem}
               value={3}
               onClick={this.handleClose}
             >

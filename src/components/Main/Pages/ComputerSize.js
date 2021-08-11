@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
-import ServerUtils from '../../../utils/ServerUtils';
-import TabHandler from '../TabHandler';
 
 const styles = {
   email: {

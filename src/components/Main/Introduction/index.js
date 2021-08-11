@@ -1,6 +1,47 @@
 import React, { Component } from 'react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
+
+const rows = [
+  { name: 'bayernets GmbH', email: 'datenschutz@bayernets.de' },
+  {
+    name: 'Ferngas Netzgesellschaft GmbH',
+    email: 'datenschutz@ferngas.de',
+  },
+  {
+    name: 'Fluxys Deutschland GmbH',
+    email: 'datenschutz.deutschland@fluxys.com',
+  },
+  { name: 'Fluxys TENP GmbH', email: 'datenschutz.deutschland@fluxys.com' },
+  { name: 'GASCADE Gastransport GmbH', email: 'datenschutz@gascade.de' },
+  { name: 'Gastransport Nord GmbH', email: 'datenschutz@gtg-nord.de' },
+  {
+    name: 'Gasunie Deutschland Transport Services GmbH',
+    email: 'datenschutz@gasunie.de',
+  },
+  {
+    name: 'GRTgaz Deutschland GmbH',
+    email: 'datenschutz@grtgaz-deutschland.de',
+  },
+  { name: 'Lubmin-Brandov Gastransport GmbH', email: 'info@lbtg.de' },
+  { name: 'NEL Gastransport GmbH', email: 'datenschutz@gascade.de' },
+  { name: 'Nowega GmbH', email: 'datenschutz@nowega.de' },
+  {
+    name: 'ONTRAS Gastransport GmbH',
+    email: 'datenschutzbeauftragter@ontras.com',
+  },
+  {
+    name: 'OPAL Gastransport GmbH & Co. KG',
+    email: 'datenschutz@gascade.de',
+  },
+  { name: 'Open Grid Europe GmbH', email: 'oge-datenschutz@oge.net' },
+  { name: 'terranets bw GmbH', email: 'datenschutz@terranets-bw.de' },
+  { name: 'Thyssengas GmbH', email: 'datenschutz@thyssengas.com' },
+  {},
+];
 
 const styles = {
   text: {
@@ -11,64 +52,36 @@ const styles = {
   },
   coloredHeader: {
     color: 'rgb(106, 172, 69)',
+    fontSize: 18,
+    width: '80%',
+    fontFamily: 'sans-serif',
+    padding: 10,
   },
   names: {
     fontSize: 14,
     fontWeight: 'bold',
     padding: 1,
   },
+  h4: {
+    fontSize: 18,
+    width: '80%',
+    fontFamily: 'sans-serif',
+    padding: 10,
+  },
 };
 export default class index extends Component {
   render() {
-    let rows = [
-      { name: 'bayernets GmbH', email: 'datenschutz@bayernets.de' },
-      {
-        name: 'Ferngas Netzgesellschaft GmbH',
-        email: 'datenschutz@ferngas.de',
-      },
-      {
-        name: 'Fluxys Deutschland GmbH',
-        email: 'datenschutz.deutschland@fluxys.com',
-      },
-      { name: 'Fluxys TENP GmbH', email: 'datenschutz.deutschland@fluxys.com' },
-      { name: 'GASCADE Gastransport GmbH', email: 'datenschutz@gascade.de' },
-      { name: 'Gastransport Nord GmbH', email: 'datenschutz@gtg-nord.de' },
-      {
-        name: 'Gasunie Deutschland Transport Services GmbH',
-        email: 'datenschutz@gasunie.de',
-      },
-      {
-        name: 'GRTgaz Deutschland GmbH',
-        email: 'datenschutz@grtgaz-deutschland.de',
-      },
-      { name: 'Lubmin-Brandov Gastransport GmbH', email: 'info@lbtg.de' },
-      { name: 'NEL Gastransport GmbH', email: 'datenschutz@gascade.de' },
-      { name: 'Nowega GmbH', email: 'datenschutz@nowega.de' },
-      {
-        name: 'ONTRAS Gastransport GmbH',
-        email: 'datenschutzbeauftragter@ontras.com',
-      },
-      {
-        name: 'OPAL Gastransport GmbH & Co. KG',
-        email: 'datenschutz@gascade.de',
-      },
-      { name: 'Open Grid Europe GmbH', email: 'oge-datenschutz@oge.net' },
-      { name: 'terranets bw GmbH', email: 'datenschutz@terranets-bw.de' },
-      { name: 'Thyssengas GmbH', email: 'datenschutz@thyssengas.com' },
-      {},
-    ];
     return (
       <div style={{ margin: 10 }}>
-        {' '}
         <h1 style={{ fontFamily: 'sans-serif' }}>
           Netzentwicklungsplan Gas 2022–2032{' '}
         </h1>
+        <h4 style={styles.h4}>
+          Szenariorahmen – Marktabfrage 2022 für Wasserstoff und andere
+          Grüngasprojekte
+        </h4>
+        <h3 style={styles.coloredHeader}>Einleitung</h3>
         <p style={styles.text}>
-          <h4>
-            Szenariorahmen – Marktabfrage 2022 für Wasserstoff und andere
-            Grüngasprojekte
-          </h4>
-          <h3 style={styles.coloredHeader}>Einleitung</h3>
           Bitte füllen Sie für die Meldung von Wasserstoff und anderen
           Grüngasprojekten das Tabellenblatt „Grüngasabfrage 2022“.
           Hilfestellungen für das korrekte Ausfüllen des Formulars können Sie
@@ -76,11 +89,11 @@ export default class index extends Component {
           ausgefüllte Formular bis spätestens zum 16. April 2021 an den
           zuständigen Fernleitungsnetzbetreiber.
         </p>
+        <h3 style={styles.coloredHeader}>Datenschutz</h3>
+        <h4 style={styles.h4}>
+          Datenschutzvereinbarung der deutschen Fernleitungsnetzbetreiber
+        </h4>
         <p style={styles.text}>
-          <h3 style={styles.coloredHeader}>Datenschutz</h3>
-          <h4>
-            Datenschutzvereinbarung der deutschen Fernleitungsnetzbetreiber
-          </h4>
           Wir bitten um Ihre Teilnahme an der Marktabfrage. Die von Ihnen im
           Rahmen der Marktabfrage zur Verfügung gestellten personenbezogenen
           Daten werden ausschließlich von den aufgelisteten Unternehmen
@@ -93,17 +106,25 @@ export default class index extends Component {
           Aufbau einer Wasserstoffinfrastruktur unter Wahrung der
           Systemstabilität und Versorgungssicherheit des Erdgastransportsystems.
         </p>
-        <p style={styles.text}>
-          <h3 style={styles.coloredHeader}>
-            Kontakt des Datenschutzbeauftragten
-          </h3>
-          {rows.map((item) => (
-            <TableRow style={{ padding: 0 }} key={index}>
-              <TableCell style={styles.names}>{item.name}</TableCell>
-              <TableCell style={styles.names}>{item.email}</TableCell>
-            </TableRow>
-          ))}
-        </p>
+        <h3 style={styles.coloredHeader}>
+          Kontakt des Datenschutzbeauftragten
+        </h3>{' '}
+        <TableContainer style={{ padding: 0, width: '100%' }}>
+          <Table aria-label="simple table">
+            <TableBody>
+              {rows.map((item, index) => (
+                <TableRow key={index} style={{ padding: 0 }}>
+                  <TableCell style={styles.names}>
+                    <p>{item.name}</p>
+                  </TableCell>
+                  <TableCell style={styles.names}>
+                    <p>{item.email}</p>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     );
   }

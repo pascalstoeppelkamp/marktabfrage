@@ -2,6 +2,7 @@ class ServerUtils {
   constructor() {
     this.url = 'http://localhost:5000/api/v1/';
   }
+
   login = async (body) => {
     let data = await fetch(this.url + 'auth/login', {
       method: 'POST',
@@ -25,15 +26,15 @@ class ServerUtils {
   };
 
   sendData = async (data) => {
-    await fetch(this.url + 'eintraege', {
+    let sendData = await fetch(this.url + 'eintraege', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((data) => (data = data.json()))
-      .then((data) => console.log(data));
+    });
+    sendData = sendData.json();
+    return sendData;
   };
 
   showAbfragen = async (body) => {
