@@ -95,6 +95,7 @@ const styles = {
     fontFamily: 'sans-serif',
     width: '80%',
     padding: 10,
+    wordWrap: 'break-down',
   },
   coloredHeader: {
     color: 'rgb(106, 172, 69)',
@@ -171,10 +172,10 @@ export default class index extends Component {
           Bitte beachten Sie, dass eine Berücksichtigung der in der Marktabfrage
           gemeldeten Wasserstoff-/Grüngasprojekte im Szenariorahmen zum NEP Gas
           2022-2032 nur erfolgt, wenn die dafür erforderlichen Kriterien erfüllt
-          sind
-          (https://www.fnb-gas.de/netzentwicklungsplan/szenariorahmen/szenariorahmen-2022).
-          Für den NEP Gas 2022–2032 sind letztendlich die Festlegungen der
-          BNetzA in der Bestätigung des Szenariorahmens ausschlaggebend.
+          sind (https://www.fnb-gas.de/netzentwicklungsplan/szenariorahmen/
+          szenariorahmen-2022). Für den NEP Gas 2022–2032 sind letztendlich die
+          Festlegungen der BNetzA in der Bestätigung des Szenariorahmens
+          ausschlaggebend.
           <br />
           Grundsätzlich handelt es sich bei den Ausfüllfeldern im Formular um
           Pflichtfelder. Für die Verteilernetzbetreiber gelten jeweils die in
