@@ -1,7 +1,8 @@
-class ServerUtils {
+export default class ServerUtils {
   constructor() {
-    this.url = 'http://localhost:5000/api/v1/';
+    this.url = 'https://peaceful-atoll-11738.herokuapp.com/api/v1/';
   }
+  
 
   login = async (body) => {
     let data = await fetch(this.url + 'auth/login', {
@@ -50,4 +51,3 @@ class ServerUtils {
     return data;
   };
 }
-export default new ServerUtils();
