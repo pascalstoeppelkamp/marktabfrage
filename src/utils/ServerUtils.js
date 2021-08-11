@@ -50,4 +50,4 @@ class ServerUtils {
     return data;
   };
 }
-module.exports = ServerUtils;
+export default new ServerUtils();
