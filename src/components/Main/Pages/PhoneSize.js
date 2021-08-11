@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Box, ClickAwayListener } from '@material-ui/core';
+import { Box, ClickAwayListener, AppBar } from '@material-ui/core';
 
 const styles = {
   email: {
@@ -55,9 +55,11 @@ class SimpleMenu extends React.Component {
     let { username, userRole } = this.props;
 
     return (
-      <div
+      <AppBar
+        position="sticky"
         style={{
           display: 'flex',
+          flexDirection: 'row',
           justifyContent: 'space-between',
           backgroundColor: '#f0f0f0',
           maxHeight: 80,
@@ -71,6 +73,8 @@ class SimpleMenu extends React.Component {
               backgroundColor: 'rgb(106, 172, 69)',
               padding: 10,
               margin: 10,
+              height: 40,
+              width: 40,
             }}
             onClick={this.handleClick}
             children={<List />}
@@ -149,7 +153,7 @@ class SimpleMenu extends React.Component {
             <Button onClick={() => this.props.login()}>Login</Button>
           </Box>
         )}
-      </div>
+      </AppBar>
     );
   }
 }
