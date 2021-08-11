@@ -42,11 +42,7 @@ class SimpleMenu extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = (event) => {
-    let val = event.target.value;
-    if (!val) {
-      val = 0;
-    }
+  handleClose = (val) => {
     this.props.handleChange(val);
     this.setState({ anchorEl: null });
   };
@@ -92,7 +88,7 @@ class SimpleMenu extends React.Component {
             key={'0'}
             style={styles.menuItem}
             value={0}
-            onClick={this.handleClose}
+            onClick={() => this.handleClose(0)}
           >
             <p style={{ color: 'rgb(106, 172, 69)' }}>Einleitung</p>
           </MenuItem>
@@ -100,7 +96,7 @@ class SimpleMenu extends React.Component {
             key={'1'}
             style={styles.menuItem}
             value={1}
-            onClick={this.handleClose}
+            onClick={() => this.handleClose(1)}
           >
             <p style={{ color: 'rgb(106, 172, 69)' }}>Formular</p>
           </MenuItem>
@@ -108,7 +104,7 @@ class SimpleMenu extends React.Component {
             key={'2'}
             style={styles.menuItem}
             value={2}
-            onClick={this.handleClose}
+            onClick={() => this.handleClose(2)}
           >
             <p style={{ color: 'rgb(106, 172, 69)' }}>Anleitung</p>
           </MenuItem>
@@ -117,7 +113,7 @@ class SimpleMenu extends React.Component {
               key={'3'}
               style={styles.menuItem}
               value={3}
-              onClick={this.handleClose}
+              onClick={() => this.handleClose(3)}
             >
               <p style={{ color: 'rgb(106, 172, 69)' }}>Verwaltung</p>
             </MenuItem>
