@@ -2,7 +2,6 @@ export default class ServerUtils {
   constructor() {
     this.url = 'https://peaceful-atoll-11738.herokuapp.com/api/v1/';
   }
-  
 
   login = async (body) => {
     let data = await fetch(this.url + 'auth/login', {
@@ -23,7 +22,7 @@ export default class ServerUtils {
     );
     document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     localStorage.clear();
-    window.location.href = '/';
+    window.location.href = '/marktabfrage';
   };
 
   sendData = async (data) => {
