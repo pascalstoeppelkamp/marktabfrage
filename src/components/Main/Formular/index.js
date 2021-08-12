@@ -33,7 +33,9 @@ export default class index extends Component {
       errMessage: null,
     };
   }
-  fetchData = async (allData, tableData) => {
+  fetchData = async () => {
+    let allData = this.props.getAllData;
+    let tableData = this.props.tableData;
     let data = {};
     for (let item in allData) {
       data[allData[item].id] = allData[item].value;
@@ -45,21 +47,8 @@ export default class index extends Component {
       this.setState({ errMessage: err });
     } else {
       this.setState({ errMessage: null });
+      this.props.clearInputs();
     }
-  };
-
-  setAllData = (data) => {
-    let { allData } = this.state;
-    let { id } = data;
-    allData[id] = data;
-    this.setState({ allData });
-  };
-
-  setTableData = (data) => {
-    let { tableData } = this.state;
-    let { id } = data;
-    tableData[id] = data;
-    this.setState({ tableData });
   };
 
   _Login = (data) => {
@@ -80,30 +69,36 @@ export default class index extends Component {
   };
 
   render() {
-    let { allData, tableData, errMessage } = this.state;
+    let { errMessage } = this.state;
     return (
       <>
         <Header />
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <Box style={styles.form}>
-              <Form setAllData={this.setAllData} />
+              <Form
+                getAllData={this.props.getAllData}
+                setAllData={this.props.setAllData}
+              />
             </Box>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box style={styles.rightPage}>
-              <Site2 allData={this.setAllData} />
+              <Site2
+                allData={this.props.setAllData}
+                getAllData={this.props.getAllData}
+              />
             </Box>
           </Grid>
         </Grid>
 
         <Box style={{ marginTop: 20 }}>
-          <Table tableData={this.setTableData} />
+          <Table
+            tableData={this.props.tableData}
+            getTableData={this.props.tableData}
+          />
         </Box>
-        <Button
-          style={styles.sendButton}
-          onClick={() => this.fetchData(allData, tableData)}
-        >
+        <Button style={styles.sendButton} onClick={() => this.fetchData()}>
           Senden
         </Button>
         {errMessage ? this.setErrMsg(errMessage) : null}

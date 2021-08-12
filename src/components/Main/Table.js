@@ -106,6 +106,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweidrei}
                     id={'zweidrei'}
                     data={row}
                     onChange={(text, id) =>
@@ -115,6 +116,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweivier}
                     id={'zweivier'}
                     data={row}
                     onChange={(text, id) =>
@@ -124,6 +126,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweifuenf}
                     id={'zweifuenf'}
                     data={row}
                     onChange={(text, id) =>
@@ -133,6 +136,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweisechs}
                     id={'zweisechs'}
                     data={row}
                     onChange={(text, id) =>
@@ -142,6 +146,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweisieben}
                     id={'zweisieben'}
                     data={row}
                     onChange={(text, id) =>
@@ -151,6 +156,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweiacht}
                     id={'zweiacht'}
                     data={row}
                     onChange={(text, id) =>
@@ -160,6 +166,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].zweineun}
                     id={'zweineun'}
                     data={row}
                     onChange={(text, id) =>
@@ -169,6 +176,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].dreinull}
                     id={'dreinull'}
                     data={row}
                     onChange={(text, id) =>
@@ -178,6 +186,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].dreieins}
                     id={'dreieins'}
                     data={row}
                     onChange={(text, id) =>
@@ -187,6 +196,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].dreizwei}
                     id={'dreizwei'}
                     data={row}
                     onChange={(text, id) =>
@@ -196,6 +206,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].viernull}
                     id={'viernull'}
                     data={row}
                     onChange={(text, id) =>
@@ -205,6 +216,7 @@ export default class DataTable extends React.Component {
                 </TableCell>
                 <TableCell align="center" style={styles.year}>
                   <TextField
+                    value={rows[row].fuenfnull}
                     id={'fuenfnull'}
                     data={row}
                     onChange={(text, id) =>

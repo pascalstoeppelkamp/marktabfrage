@@ -7,9 +7,10 @@ export default class TextFieldComponent extends Component {
     this.props.setAllData(data);
   };
   render() {
-    let { data, fromRadioBtn } = this.props;
+    let { data, fromRadioBtn, getAllData } = this.props;
     return (
       <TextField
+        value={getAllData[data.id]?.value ? getAllData[data.id]?.value : ''}
         inputProps={{ min: 0, style: { marginLeft: 5 } }}
         style={{
           width: '100%',

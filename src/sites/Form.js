@@ -47,6 +47,7 @@ export default class Form extends Component {
       }
       arr.push(
         <FormComponent
+          getAllData={this.props.getAllData}
           setAllData={this.props.setAllData}
           key={id}
           data={value}

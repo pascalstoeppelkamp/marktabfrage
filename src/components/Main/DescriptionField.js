@@ -38,7 +38,7 @@ export default class Test extends React.Component {
   };
 
   render() {
-    let { ProjectDescription } = this.state;
+    let { getAllData } = this.props;
     return (
       <Box
         style={{
@@ -48,8 +48,12 @@ export default class Test extends React.Component {
         }}
       >
         <textarea
+          value={
+            getAllData['ProjectDescription']?.value
+              ? getAllData['ProjectDescription']?.value
+              : ''
+          }
           style={styles.input}
-          value={ProjectDescription.value}
           onChange={this._changeTextField}
         />
       </Box>

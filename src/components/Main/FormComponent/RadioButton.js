@@ -93,6 +93,7 @@ export default class RadioButton extends Component {
                 values={['Bitte Ausfüllen', 'Entry / Quelle', 'Exit / Senke']}
               />
               <TextField
+                getAllData={this.props.getAllData}
                 setAllData={this.props.setAllData}
                 fromRadioBtn={true}
                 data={data}

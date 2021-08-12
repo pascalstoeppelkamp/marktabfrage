@@ -24,7 +24,10 @@ export default class Site2 extends Component {
           Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:
         </Typography>
         <Box style={styles.description}>
-          <DescriptionField allData={this.props.allData} />
+          <DescriptionField
+            getAllData={this.props.getAllData}
+            allData={this.props.allData}
+          />
         </Box>
         <Box style={styles.image}>
           <NetworkDevelopmentPlan />

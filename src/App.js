@@ -12,6 +12,8 @@ export default class App extends Component {
     this.state = {
       userRole: null,
       fnb: null,
+      allData: {},
+      tableData: {},
     };
   }
 
@@ -24,6 +26,21 @@ export default class App extends Component {
     });
   };
 
+  setAllData = (data) => {
+    let { allData } = this.state;
+    let { id } = data;
+    allData[id] = data;
+    this.setState({ allData });
+  };
+
+  setTableData = (data) => {
+    let { tableData } = this.state;
+    let { id } = data;
+    tableData[id] = data;
+    this.setState({ tableData });
+  };
+
+  allData = () => {};
   render() {
     let { loginModal, username, userRole, fnb } = this.state;
     return (
@@ -42,10 +59,15 @@ export default class App extends Component {
           />
         ) : null}
         <Pages
+          clearInputs={() => this.setState({ allData: {} })}
           pressedLogin={() => this.setState({ loginModal: true })}
           username={username}
           userRole={userRole}
           fnb={fnb}
+          setAllData={this.setAllData}
+          getAllData={this.state.allData}
+          tableData={this.setTableData}
+          getTableData={this.state.tableData}
         />
       </Box>
     );

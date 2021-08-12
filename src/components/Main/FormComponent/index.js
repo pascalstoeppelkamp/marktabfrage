@@ -52,6 +52,7 @@ export default class FormComponent extends Component {
             id={id}
             published={published}
             data={data}
+            getAllData={this.props.getAllData}
           />
         );
       case 'Radiobutton':
@@ -62,6 +63,7 @@ export default class FormComponent extends Component {
             values={values}
             published={published}
             data={data}
+            getAllData={this.props.getAllData}
             label={label}
           />
         );
@@ -73,6 +75,7 @@ export default class FormComponent extends Component {
             values={values}
             data={data}
             published={published}
+            getAllData={this.props.getAllData}
           />
         );
       case 'Checkbox':
@@ -83,6 +86,7 @@ export default class FormComponent extends Component {
             values={values}
             data={data}
             published={published}
+            getAllData={this.props.getAllData}
           />
         );
       case 'Datepicker':
@@ -93,6 +97,7 @@ export default class FormComponent extends Component {
             values={values}
             data={data}
             published={published}
+            getAllData={this.props.getAllData}
           />
         );
       default:
@@ -102,6 +107,7 @@ export default class FormComponent extends Component {
             data={data}
             id={id}
             published={published}
+            getAllData={this.props.getAllData}
           />
         );
     }

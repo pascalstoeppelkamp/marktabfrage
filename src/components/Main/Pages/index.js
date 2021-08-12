@@ -48,6 +48,7 @@ export default class index extends Component {
   handleChangePhone = (value) => {
     this.setState({ value });
   };
+
   render() {
     let { username, userRole, fnb } = this.props;
     let { value, phoneSize } = this.state;
@@ -72,8 +73,16 @@ export default class index extends Component {
             login={this._Login}
           />
         )}
-
-        <TabHandler value={value} index={0} fnb={fnb} />
+        <TabHandler
+          clearInputs={this.props.clearInputs}
+          setAllData={this.props.setAllData}
+          value={value}
+          index={0}
+          fnb={fnb}
+          getAllData={this.props.getAllData}
+          tableData={this.props.tableData}
+          getTableData={this.props.tableData}
+        />
       </>
     );
   }
