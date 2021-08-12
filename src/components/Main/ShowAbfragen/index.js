@@ -32,6 +32,7 @@ export default class index extends Component {
     };
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     let { fnb } = this.props;
     this.showData(fnb);
   }

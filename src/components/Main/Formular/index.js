@@ -33,6 +33,11 @@ export default class index extends Component {
       errMessage: null,
     };
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   fetchData = async () => {
     let allData = this.props.getAllData;
     let tableData = this.props.tableData;
