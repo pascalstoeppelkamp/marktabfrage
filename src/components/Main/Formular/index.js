@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import Header from '../Header';
-import { Box, Grid, Button } from '@material-ui/core';
+import {
+  Box,
+  Grid,
+  Button,
+  CircularProgress,
+  Snackbar,
+} from '@material-ui/core';
 import Site2 from '../../../sites/Site2';
 import Form from '../../../sites/Form';
 import Table from '../Table';
 import ServerUtils from '../../../utils/ServerUtils';
+
+import { Alert } from '@material-ui/lab';
+
 const styles = {
   form: {
     height: '100%',
@@ -17,8 +26,11 @@ const styles = {
   sendButton: {
     height: 50,
     width: 150,
-    background: 'grey',
     margin: 10,
+  },
+  progressBar: {
+    position: 'absolute',
+    marginTop: 15,
   },
 };
 export default class index extends Component {
@@ -31,6 +43,8 @@ export default class index extends Component {
       userToken: null,
       userRole: null,
       errMessage: null,
+      err: false,
+      isLoading: false,
     };
   }
 
@@ -39,6 +53,7 @@ export default class index extends Component {
   }
 
   fetchData = async () => {
+    this.setState({ isLoading: true });
     let allData = this.props.getAllData;
     let tableData = this.props.tableData;
     let data = {};
@@ -49,9 +64,22 @@ export default class index extends Component {
     let sendData = await this.ServerUtils.sendData(data);
     if (!sendData.success) {
       let err = sendData.error.split(',');
-      this.setState({ errMessage: err });
+      this.setState({
+        errMessage: err,
+        isLoading: false,
+        err: true,
+        success: false,
+        btnColor: 'secondary',
+      });
+      window.scrollTo(0, document.body.scrollHeight);
     } else {
-      this.setState({ errMessage: null });
+      this.setState({
+        errMessage: null,
+        isLoading: false,
+        btnColor: 'primary',
+        err: false,
+        success: true,
+      });
       this.props.clearInputs();
     }
   };
@@ -74,7 +102,7 @@ export default class index extends Component {
   };
 
   render() {
-    let { errMessage } = this.state;
+    let { errMessage, isLoading, btnColor, err, success } = this.state;
     return (
       <>
         <Header />
@@ -103,10 +131,44 @@ export default class index extends Component {
             getTableData={this.props.tableData}
           />
         </Box>
-        <Button style={styles.sendButton} onClick={() => this.fetchData()}>
+        <Button
+          style={styles.sendButton}
+          variant="outlined"
+          color={btnColor}
+          onClick={() => this.fetchData()}
+        >
           Senden
         </Button>
+        {isLoading ? (
+          <CircularProgress style={styles.progressBar} disableShrink />
+        ) : null}
         {errMessage ? this.setErrMsg(errMessage) : null}
+        <Snackbar
+          open={err}
+          autoHideDuration={6000}
+          onClose={() => this.setState({ err: false })}
+        >
+          <Alert
+            onClose={() => this.setState({ err: false })}
+            severity="error"
+            sx={{ width: '100%' }}
+          >
+            Das Formular konnte nicht abgesendet werden.
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={success}
+          autoHideDuration={6000}
+          onClose={() => this.setState({ success: false })}
+        >
+          <Alert
+            onClose={() => this.setState({ success: false })}
+            severity="success"
+            sx={{ width: '100%' }}
+          >
+            Das Formular wurde erfolgreich abgesendet.
+          </Alert>
+        </Snackbar>
       </>
     );
   }
