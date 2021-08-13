@@ -70,12 +70,15 @@ export default class LoginBox extends Component {
 
   Login = async () => {
     let { username, password } = this.state;
+    let data = {};
     let body = {
       email: username,
       password: password,
     };
     this.setState({ isLoading: true });
-    const data = await this.ServerUtils.login(body);
+    await this.ServerUtils.login(body).then((result) => {
+      data = result.data;
+    });
     if (data.success) {
       this.setState({ error: null, isLoading: false });
       this.props.Login(data);

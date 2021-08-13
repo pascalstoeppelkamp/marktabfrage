@@ -1,19 +1,11 @@
+import axios from 'axios';
 export default class ServerUtils {
   constructor() {
-    this.url = 'https://peaceful-atoll-11738.herokuapp.com/api/v1/';
+    this.url = 'http://localhost:5000/api/v1/';
   }
 
   login = async (body) => {
-    let data = await fetch(this.url + 'auth/login', {
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    data = data.json();
-    return data;
+    return axios.post(this.url + 'auth/login', body);
   };
 
   logout = async () => {
