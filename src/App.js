@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HeaderLogos from './components/HeaderLogos';
 import Pages from './components/Main/Pages';
 import LoginModal from './components/LoginModal';
 import { Box } from '@material-ui/core';
@@ -16,7 +15,6 @@ export default class App extends Component {
       tableData: {},
     };
   }
-
   _Login = (data) => {
     this.setState({
       username: data.username,
@@ -51,7 +49,6 @@ export default class App extends Component {
           backgroundColor: '#f0f0f0',
         }}
       >
-        <HeaderLogos />
         {loginModal ? (
           <LoginModal
             _Login={this._Login}

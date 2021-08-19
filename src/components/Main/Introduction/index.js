@@ -78,7 +78,7 @@ export default class index extends Component {
     return (
       <div style={{ margin: 10 }}>
         <h1 style={{ fontFamily: 'sans-serif' }}>
-          Netzentwicklungsplan Gas 2022–2032{' '}
+          Netzentwicklungsplan Gas 2022–2032
         </h1>
         <h4 style={styles.h4}>
           Szenariorahmen – Marktabfrage 2022 für Wasserstoff und andere
