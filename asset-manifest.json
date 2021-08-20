@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/marktabfrage/static/js/main.6f370e9d.chunk.js",
-    "main.js.map": "/marktabfrage/static/js/main.6f370e9d.chunk.js.map",
+    "main.js": "/marktabfrage/static/js/main.b1f046a1.chunk.js",
+    "main.js.map": "/marktabfrage/static/js/main.b1f046a1.chunk.js.map",
     "runtime-main.js": "/marktabfrage/static/js/runtime-main.b9be6e01.js",
     "runtime-main.js.map": "/marktabfrage/static/js/runtime-main.b9be6e01.js.map",
-    "static/js/2.0294467c.chunk.js": "/marktabfrage/static/js/2.0294467c.chunk.js",
-    "static/js/2.0294467c.chunk.js.map": "/marktabfrage/static/js/2.0294467c.chunk.js.map",
+    "static/js/2.80207e4c.chunk.js": "/marktabfrage/static/js/2.80207e4c.chunk.js",
+    "static/js/2.80207e4c.chunk.js.map": "/marktabfrage/static/js/2.80207e4c.chunk.js.map",
     "index.html": "/marktabfrage/index.html",
-    "static/js/2.0294467c.chunk.js.LICENSE.txt": "/marktabfrage/static/js/2.0294467c.chunk.js.LICENSE.txt",
+    "static/js/2.80207e4c.chunk.js.LICENSE.txt": "/marktabfrage/static/js/2.80207e4c.chunk.js.LICENSE.txt",
     "static/media/image1.63c3c2ad.png": "/marktabfrage/static/media/image1.63c3c2ad.png",
     "static/media/image2.466970de.png": "/marktabfrage/static/media/image2.466970de.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b9be6e01.js",
-    "static/js/2.0294467c.chunk.js",
-    "static/js/main.6f370e9d.chunk.js"
+    "static/js/2.80207e4c.chunk.js",
+    "static/js/main.b1f046a1.chunk.js"
   ]
 }
