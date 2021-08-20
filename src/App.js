@@ -42,13 +42,7 @@ export default class App extends Component {
   render() {
     let { loginModal, username, userRole, fnb } = this.state;
     return (
-      <Box
-        style={{
-          height: '100%',
-          width: '100%',
-          backgroundColor: '#f0f0f0',
-        }}
-      >
+      <Box style={{}}>
         {loginModal ? (
           <LoginModal
             _Login={this._Login}

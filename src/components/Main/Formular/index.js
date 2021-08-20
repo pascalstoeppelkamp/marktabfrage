@@ -17,7 +17,7 @@ import { Alert } from '@material-ui/lab';
 const styles = {
   form: {
     height: '100%',
-    width: '100%',
+    width: '99%',
   },
   rightPage: {
     height: '100%',
@@ -106,7 +106,7 @@ export default class index extends Component {
     return (
       <>
         <Header />
-        <Grid container spacing={3}>
+        <Grid container>
           <Grid item xs={12} sm={6}>
             <Box style={styles.form}>
               <Form

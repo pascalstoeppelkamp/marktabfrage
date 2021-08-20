@@ -14,7 +14,7 @@ export default class TextFieldComponent extends Component {
         inputProps={{ min: 0, style: { marginLeft: 5 } }}
         style={{
           width: '100%',
-          backgroundColor: this.props.published ? '#FFE4C470' : '#f0f0f0',
+          backgroundColor: this.props.published ? '#FFE4C470' : '#fff',
         }}
         onChange={(text) => this._changeText(text, data, fromRadioBtn)}
       />

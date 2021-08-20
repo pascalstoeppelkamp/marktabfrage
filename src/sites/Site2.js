@@ -19,7 +19,6 @@ export default class Site2 extends Component {
   render() {
     return (
       <Box style={styles.container}>
-        {' '}
         <Typography style={{ fontFamily: 'sans-serif' }}>
           Ausführliche Projektbeschreibung inkl. Beschreibung des Projektstatus:
         </Typography>

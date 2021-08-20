@@ -25,7 +25,7 @@ const styles = {
     width: '100%',
   },
   names: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
     padding: 5,
   },
 };

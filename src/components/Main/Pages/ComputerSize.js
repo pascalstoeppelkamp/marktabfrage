@@ -3,7 +3,9 @@ import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 import VpnKey from '@material-ui/icons/VpnKey';
 import HeaderLogos from './../../HeaderLogos';
-const styles = {
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = (theme) => ({
   email: {
     justifyContent: 'flex-start',
     flex: 1,
@@ -20,20 +22,112 @@ const styles = {
     justifyContent: 'center',
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'rgb(106, 172, 69)',
     height: 80,
     marginBottom: 50,
+    paddingLeft: 15,
+    paddingRight: 15,
     //backgroundColor: 'rgb(106, 172, 69)',
   },
-};
+  tabRoot: {
+    color: 'white',
+    '&:hover': {
+      color: 'green',
+      opacity: 1,
+    },
+    '&$tabSelected': { color: 'white' },
+    '&:focus': { color: 'white' },
+  },
+  show: {
+    transform: 'translateY(0)',
+    transition: 'transform .5s',
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    height: 80,
+    marginBottom: 50,
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+  hide: {
+    transform: 'translateY(-110%)',
+    transition: 'transform .5s',
+  },
+  root: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: 'rgb(106, 172, 69)',
+    height: 80,
+    marginBottom: 50,
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+});
 
-export default class computerSize extends Component {
+class computerSize extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shouldShow: null,
+    };
+
+    this.lastScroll = null;
+
+    this.handleScroll = this.handleScroll.bind(this);
+    // Alternatively, you can throttle scroll events to avoid
+    // updating the state too often. Here using lodash.
+    // this.handleScroll = _.throttle(this.handleScroll.bind(this), 100);
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(evt) {
+    const lastScroll = window.scrollY;
+
+    if (lastScroll === this.lastScroll) {
+      return;
+    }
+
+    const shouldShow =
+      this.lastScroll !== null ? lastScroll < this.lastScroll : null;
+
+    if (shouldShow !== this.state.shouldShow) {
+      this.setState((prevState, props) => ({
+        ...prevState,
+        shouldShow,
+      }));
+    }
+
+    this.lastScroll = lastScroll;
+  }
+
   render() {
-    let { username, userRole, value } = this.props;
+    let { username, userRole, value, classes } = this.props;
     return (
       <>
         <HeaderLogos />
-        <AppBar position="sticky" style={styles.appBar}>
+        <AppBar
+          position="sticky"
+          /* className={classes.appBar} */ color="default"
+          className={`${classes.root} ${
+            this.state.shouldShow === null
+              ? ''
+              : this.state.shouldShow
+              ? classes.show
+              : classes.hide
+          }`}
+        >
           <Tabs
             TabIndicatorProps={{
               style: {
@@ -50,34 +144,29 @@ export default class computerSize extends Component {
             onChange={this.props.handleChange}
           >
             <Tab
-              label={
-                <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
-                  Einleitung
-                </p>
-              }
+              classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+              label={'Einleitung'}
+              style={{ fontSize: 20 }}
             />
             <Tab
-              label={
-                <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
-                  Formular
-                </p>
-              }
+              classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+              label={'Formular'}
+              style={{ fontSize: 20 }}
             />
             <Tab
-              label={
-                <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
-                  Anleitung
-                </p>
-              }
+              classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+              label={'Anleitung'}
+              style={{ fontSize: 20 }}
             />
 
             {userRole === 'user' || userRole === 'admin' ? (
               <Tab
-                label={
-                  <p style={{ color: 'rgb(106, 172, 69)', fontSize: 16 }}>
-                    Verwaltung
-                  </p>
-                }
+                classes={{
+                  root: classes.tabRoot,
+                  selected: classes.tabSelected,
+                }}
+                label={'Verwaltung'}
+                style={{ fontSize: 20 }}
               />
             ) : null}
           </Tabs>
@@ -90,7 +179,7 @@ export default class computerSize extends Component {
                 color: 'rgb(106, 172, 69)',
               }}
             >
-              <Box style={styles.email}>
+              <Box className={classes.email}>
                 <p
                   style={{
                     fontFamily: 'sans-serif',
@@ -101,26 +190,24 @@ export default class computerSize extends Component {
                   {username}
                 </p>
               </Box>
-              <Box style={styles.logoutBtn}>
+              <Box className={classes.logoutBtn}>
                 <Button
                   onClick={() => this.props.logout()}
                   startIcon={
-                    <ExitToApp style={{ fontSize: 30, color: '#4caf50' }} />
+                    <ExitToApp style={{ fontSize: 30, color: 'white' }} />
                   }
                 >
-                  Logout
+                  <p style={{ color: 'white' }}>Logout</p>
                 </Button>
               </Box>
             </Box>
           ) : (
-            <Box style={styles.logoutBtn}>
+            <Box className={classes.logoutBtn}>
               <Button
                 onClick={() => this.props.login()}
-                startIcon={
-                  <VpnKey style={{ fontSize: 30, color: '#4caf50' }} />
-                }
+                startIcon={<VpnKey style={{ fontSize: 30, color: 'white' }} />}
               >
-                Login
+                <p style={{ color: 'white' }}>Login</p>
               </Button>
             </Box>
           )}
@@ -129,3 +216,5 @@ export default class computerSize extends Component {
     );
   }
 }
+
+export default withStyles(styles)(computerSize);

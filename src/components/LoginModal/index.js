@@ -16,7 +16,7 @@ const styles = {
     margin: 30,
     height: '56%',
     borderRadius: 6,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
   },
 };
 export default class index extends Component {

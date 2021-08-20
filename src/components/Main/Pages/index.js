@@ -25,7 +25,7 @@ export default class index extends Component {
 
   checkIfPhone = (size) => {
     let { phoneSize } = this.state;
-    if (size < 699) {
+    if (size < 799) {
       phoneSize = true;
     } else {
       phoneSize = false;

@@ -23,7 +23,7 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
     maxHeight: 80,
     zIndex: theme.zIndex.drawer + 1,
     boxShadow:
@@ -31,7 +31,7 @@ const styles = (theme) => ({
   },
   menuItem: {
     margin: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
     boxShadow:
       '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
   },

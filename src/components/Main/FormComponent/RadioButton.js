@@ -13,7 +13,7 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
   },
 };
 
@@ -66,7 +66,7 @@ export default class RadioButton extends Component {
         <Box
           style={{
             flex: 1,
-            backgroundColor: published ? '#FFE4C470' : '#f0f0f0f0',
+            backgroundColor: published ? '#FFE4C470' : '#ffff0',
           }}
           key={item}
         >
