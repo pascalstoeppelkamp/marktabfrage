@@ -23,7 +23,7 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgb(106, 172, 69)',
     maxHeight: 80,
     zIndex: theme.zIndex.drawer + 1,
     boxShadow:
@@ -45,15 +45,78 @@ const styles = (theme) => ({
   drawerContainer: {
     overflow: 'auto',
   },
-  root: {
+  show: {
+    transform: 'translateY(0)',
+    transition: 'transform .5s',
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgb(106, 172, 69)',
+    maxHeight: 80,
+    zIndex: theme.zIndex.drawer + 1,
+    boxShadow:
+      '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+  },
+  hide: {
+    transform: 'translateY(-110%)',
+    transition: 'transform .5s',
+  },
+  root: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgb(106, 172, 69)',
+    maxHeight: 80,
+    zIndex: theme.zIndex.drawer + 1,
+    boxShadow:
+      '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
   },
 });
 
 class SimpleMenu extends React.Component {
-  state = {
-    anchorEl: null,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shouldShow: null,
+      anchorEl: null,
+    };
+
+    this.lastScroll = null;
+
+    this.handleScroll = this.handleScroll.bind(this);
+    // Alternatively, you can throttle scroll events to avoid
+    // updating the state too often. Here using lodash.
+    // this.handleScroll = _.throttle(this.handleScroll.bind(this), 100);
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(evt) {
+    const lastScroll = window.scrollY;
+
+    if (lastScroll === this.lastScroll) {
+      return;
+    }
+
+    const shouldShow =
+      this.lastScroll !== null ? lastScroll < this.lastScroll : null;
+
+    if (shouldShow !== this.state.shouldShow) {
+      this.setState((prevState, props) => ({
+        ...prevState,
+        shouldShow,
+      }));
+    }
+
+    this.lastScroll = lastScroll;
+  }
 
   handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
@@ -72,19 +135,29 @@ class SimpleMenu extends React.Component {
     let { username, userRole, classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <AppBar position="sticky" className={classes.appBar}>
+      <>
+        <AppBar
+          position="sticky"
+          /* className={classes.appBar} */ color="default"
+          className={`${classes.root} ${
+            this.state.shouldShow === null
+              ? ''
+              : this.state.shouldShow
+              ? classes.show
+              : classes.hide
+          }`}
+        >
           <ClickAwayListener onClickAway={this.handleClickAway}>
             <IconButton
               style={{
-                backgroundColor: 'rgb(106, 172, 69)',
+                backgroundColor: 'white',
                 padding: 10,
                 margin: 10,
                 height: 40,
                 width: 40,
               }}
               onClick={this.handleClick}
-              children={<List />}
+              children={<List style={{ color: 'rgb(106, 172, 69)' }} />}
             />
           </ClickAwayListener>
 
@@ -112,7 +185,7 @@ class SimpleMenu extends React.Component {
                 <Button
                   onClick={() => this.props.logout()}
                   startIcon={
-                    <ExitToApp style={{ fontSize: 30, color: '#4caf50' }} />
+                    <ExitToApp style={{ fontSize: 30, color: 'white' }} />
                   }
                 />
               </Box>
@@ -121,9 +194,7 @@ class SimpleMenu extends React.Component {
             <Box className={classes.logoutBtn}>
               <Button
                 onClick={() => this.props.login()}
-                startIcon={
-                  <VpnKey style={{ fontSize: 30, color: '#4caf50' }} />
-                }
+                startIcon={<VpnKey style={{ fontSize: 30, color: 'white' }} />}
               />
             </Box>
           )}
@@ -173,7 +244,7 @@ class SimpleMenu extends React.Component {
             ) : null}
           </div>
         </Drawer>
-      </div>
+      </>
     );
   }
 }
