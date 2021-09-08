@@ -117,14 +117,14 @@ const fields = {
     value: {},
   },
   ExistingConnectiontFNB: {
-    label: 'Bestehender Anschlusspunkt an FNB-Netz (optional)',
+    label: 'Anschlusspunkt an FNB-Netz', //'Bestehender Anschlusspunkt an FNB-Netz (optional)'
     published: false,
     type: 'Textfield',
     id: 'ExistingConnectiontFNB',
     value: {},
   },
   Coordinates: {
-    label: 'Koordinaten des Projektstandortes (rechts/links)',
+    label: 'Koordinaten des Projektstandortes', // (rechts/links)
     type: 'Radiobutton',
     published: false,
     values: ['UTM-Koordinaten', 'Gauß-Krüger-Koordinaten'],
@@ -148,8 +148,7 @@ const fields = {
     value: {},
   },
   ExitPressure: {
-    label:
-      'Benötigter Ausspeisedruck (in [bar] Überdruck)\n(Angaben möglichst konkret oder Bandbreite angeben; bspw. 15–30 [bar])',
+    label: 'Benötigter Ausspeisedruck ', //(in [bar] Überdruck)\n(Angaben möglichst konkret oder Bandbreite angeben; bspw. 15–30 [bar])
     type: 'Textfield',
     published: false,
     id: 'ExitPressure',
@@ -183,15 +182,14 @@ const fields = {
     value: {},
   },
   electrolysers: {
-    label: 'Bei Elektrolyseuren, Angaben zum Stromanschluss/Strombezug',
+    label: 'Angaben zum Stromanschluss/Strombezug', //Bei Elektrolyseuren,
     type: 'Textfield',
     published: false,
     id: 'electrolysers',
     value: {},
   },
   ReductionNaturalGas: {
-    label:
-      'Führt das Wasserstoff-/Grüngasprojekt zu einer Reduzierung des Erdgasbedarfs?',
+    label: 'Führt zu einer Reduzierung des Erdgasbedarfs?', //   'Führt das Wasserstoff-/Grüngasprojekt zu einer Reduzierung des Erdgasbedarfs?',
     type: 'Radiobutton',
     values: ['Ja', 'Nein'],
     published: false,

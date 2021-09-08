@@ -9,26 +9,20 @@ export default class TabHandler extends Component {
   render() {
     let { value, fnb } = this.props;
     return (
-      <Box>
+      <>
         {value === 0 ? <Introduction /> : null}
         {value === 1 ? (
-          <Box>
-            <Formular
-              clearInputs={this.props.clearInputs}
-              getAllData={this.props.getAllData}
-              setAllData={this.props.setAllData}
-              tableData={this.props.tableData}
-              getTableData={this.props.tableData}
-            />
-          </Box>
+          <Formular
+            clearInputs={this.props.clearInputs}
+            getAllData={this.props.getAllData}
+            setAllData={this.props.setAllData}
+            tableData={this.props.tableData}
+            getTableData={this.props.tableData}
+          />
         ) : null}
         {value === 2 ? <Instruction /> : null}
-        {value === 3 ? (
-          <Box>
-            <ShowAbfragen fnb={fnb} />
-          </Box>
-        ) : null}
-      </Box>
+        {value === 3 ? <ShowAbfragen fnb={fnb} /> : null}
+      </>
     );
   }
 }

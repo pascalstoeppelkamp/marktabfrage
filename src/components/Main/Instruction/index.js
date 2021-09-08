@@ -91,6 +91,13 @@ const rows = [
 
 const styles = {
   text: {
+    fontSize: 22,
+    fontFamily: 'sans-serif',
+    width: '60%',
+    wordWrap: 'break-down',
+    lineHeight: 1.7,
+  },
+  ptext: {
     fontSize: 18,
     fontFamily: 'sans-serif',
     width: '80%',
@@ -98,6 +105,12 @@ const styles = {
     wordWrap: 'break-down',
   },
   coloredHeader: {
+    color: 'rgb(106, 172, 69)',
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    padding: 40,
+  },
+  pcoloredHeader: {
     color: 'rgb(106, 172, 69)',
     fontSize: 18,
     fontFamily: 'sans-serif',
@@ -118,16 +131,54 @@ const styles = {
   },
 };
 export default class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      phoneSize: false,
+    };
+    window.addEventListener('resize', this.update);
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.update();
   }
 
+  update = () => {
+    this.checkIfPhone(window.innerWidth);
+  };
+
+  checkIfPhone = (size) => {
+    let { phoneSize } = this.state;
+    if (size < 799) {
+      phoneSize = true;
+    } else {
+      phoneSize = false;
+    }
+    this.setState({ phoneSize });
+  };
+
   render() {
+    let { phoneSize } = this.state;
     return (
-      <div style={{ margin: 10 }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <h1 style={{ fontFamily: 'sans-serif' }}>Anleitung</h1>
-        <h3 style={styles.coloredHeader}>Kurze Erläuterung</h3>
-        <p style={styles.text}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
+          Kurze Erläuterung
+        </h3>
+        <p style={phoneSize ? { ...styles.ptext } : { ...styles.text }}>
           Dieses Tabellenblatt gibt Hilfestellungen für das korrekte Ausfüllen
           des Formulars zur Marktabfrage. Sollten Sie weiterhin offene Fragen
           haben, wenden Sie sich bitte an die genannten Ansprechpartnerin bzw.
@@ -136,7 +187,13 @@ export default class index extends Component {
           zuständigen Fernleitungsnetzbetreiber. Bitte keine Anfragen an den FNB
           Gas stellen.
         </p>
-        <h3 style={styles.coloredHeader}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
           Ansprechpartnerin bzw. Ansprechpartner
         </h3>
         <TableContainer style={{ padding: 0, width: '100%' }}>
@@ -169,10 +226,19 @@ export default class index extends Component {
             </TableBody>
           </Table>
         </TableContainer>
-        <h3 style={styles.coloredHeader}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
           Allgemeine Hinweise für Projektmeldungen
         </h3>
-        <p style={styles.text} wordWrap="break-down">
+        <p
+          style={phoneSize ? { ...styles.ptext } : { ...styles.text }}
+          wordWrap="break-down"
+        >
           Bitte beachten Sie, dass eine Berücksichtigung der in der Marktabfrage
           gemeldeten Wasserstoff-/Grüngasprojekte im Szenariorahmen zum NEP Gas
           2022-2032 nur erfolgt, wenn die dafür erforderlichen Kriterien erfüllt
@@ -190,11 +256,17 @@ export default class index extends Component {
           Veröffentlichung ist für eine Berücksichtigung der Anfrage im
           Szenariorahmen/Netzentwicklungsplan erforderlich.
         </p>
-        <h3 style={styles.coloredHeader}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
           Allgemeine Hinweise für Meldungen des voraussichtlichen Bedarfs der
           Verteilernetzbetreiber
         </h3>
-        <p style={styles.text}>
+        <p style={phoneSize ? { ...styles.ptext } : { ...styles.text }}>
           Analog zu den in der Kooperationsvereinbarung vereinbarten Regelungen
           zum Kapazitätsbedarf (Langfristprognose) melden die
           Verteilernetzbetreiber den aggregierten, voraussichtlichen
@@ -205,11 +277,17 @@ export default class index extends Component {
           begründen, um eine Plausibilisierung des Bedarfs zu ermöglichen und um
           Doppelmeldungen zu vermeiden.
         </p>
-        <h3 style={styles.coloredHeader}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
           Allgemeine Hinweise für Meldungen des konkreten Bedarfs der
           Verteilernetzbetreiber
         </h3>
-        <p style={styles.text}>
+        <p style={phoneSize ? { ...styles.ptext } : { ...styles.text }}>
           Liegen den Verteilernetzbetreibern konkrete Projektinformationen vor,
           sollten diese Projekte für den Zeitraum 2022-2032 und die Jahre 2040
           und 2050 separat gemeldet werden und nicht in der Meldung des
@@ -236,7 +314,15 @@ export default class index extends Component {
           Verteilernetzbetreibern, den Fernleitungsnetzbetreibern und der BNetzA
           abzustimmen.
         </p>
-        <h3 style={styles.coloredHeader}>Ausfüllhinweise</h3>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
+          Ausfüllhinweise
+        </h3>
         <TableContainer style={{ padding: 0 }}>
           <Table aria-label="simple table">
             <TableHead>
@@ -274,7 +360,7 @@ export default class index extends Component {
             <TableHead>
               <TableRow>
                 <TableCell style={styles.header}>
-                  <p style={{ margin: 5 }}>Feld</p>
+                  <p style={{ margin: 5 }}>Tabellenreihe</p>
                 </TableCell>
                 <TableCell style={styles.header}>
                   <p style={{ margin: 5 }}>

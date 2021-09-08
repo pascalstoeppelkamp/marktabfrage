@@ -45,12 +45,25 @@ const rows = [
 
 const styles = {
   text: {
+    fontSize: 22,
+    fontFamily: 'sans-serif',
+    wordWrap: 'break-down',
+    lineHeight: 1.7,
+    width: '60%',
+  },
+  ptext: {
     fontSize: 18,
     width: '80%',
     fontFamily: 'sans-serif',
     padding: 10,
   },
   coloredHeader: {
+    color: 'rgb(106, 172, 69)',
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    padding: 40,
+  },
+  pcoloredHeader: {
     color: 'rgb(106, 172, 69)',
     fontSize: 18,
     width: '80%',
@@ -64,6 +77,10 @@ const styles = {
     flex: 1,
   },
   h4: {
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+  },
+  ph4: {
     fontSize: 18,
     width: '80%',
     fontFamily: 'sans-serif',
@@ -71,21 +88,65 @@ const styles = {
   },
 };
 export default class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      phoneSize: false,
+    };
+    window.addEventListener('resize', this.update);
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.update();
   }
+
+  update = () => {
+    this.checkIfPhone(window.innerWidth);
+  };
+
+  checkIfPhone = (size) => {
+    let { phoneSize } = this.state;
+    if (size < 799) {
+      phoneSize = true;
+    } else {
+      phoneSize = false;
+    }
+    this.setState({ phoneSize });
+  };
+
   render() {
+    let { phoneSize } = this.state;
     return (
-      <div style={{ margin: 10 }}>
+      <div
+        style={
+          phoneSize
+            ? { margin: 10 }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+              }
+        }
+      >
         <h1 style={{ fontFamily: 'sans-serif' }}>
           Netzentwicklungsplan Gas 2022–2032
         </h1>
-        <h4 style={styles.h4}>
+        <h4 style={phoneSize ? { ...styles.ph4 } : { ...styles.h4 }}>
           Szenariorahmen – Marktabfrage 2022 für Wasserstoff und andere
           Grüngasprojekte
         </h4>
-        <h3 style={styles.coloredHeader}>Einleitung</h3>
-        <p style={styles.text}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
+          Einleitung
+        </h3>
+        <p style={phoneSize ? { ...styles.ptext } : { ...styles.text }}>
           Bitte füllen Sie für die Meldung von Wasserstoff und anderen
           Grüngasprojekten das Tabellenblatt „Grüngasabfrage 2022“.
           Hilfestellungen für das korrekte Ausfüllen des Formulars können Sie
@@ -93,11 +154,19 @@ export default class index extends Component {
           ausgefüllte Formular bis spätestens zum 16. April 2021 an den
           zuständigen Fernleitungsnetzbetreiber.
         </p>
-        <h3 style={styles.coloredHeader}>Datenschutz</h3>
-        <h4 style={styles.h4}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
+          Datenschutz
+        </h3>
+        <h4 style={phoneSize ? { ...styles.ph4 } : { ...styles.h4 }}>
           Datenschutzvereinbarung der deutschen Fernleitungsnetzbetreiber
         </h4>
-        <p style={styles.text}>
+        <p style={phoneSize ? { ...styles.ptext } : { ...styles.text }}>
           Wir bitten um Ihre Teilnahme an der Marktabfrage. Die von Ihnen im
           Rahmen der Marktabfrage zur Verfügung gestellten personenbezogenen
           Daten werden ausschließlich von den aufgelisteten Unternehmen
@@ -110,7 +179,13 @@ export default class index extends Component {
           Aufbau einer Wasserstoffinfrastruktur unter Wahrung der
           Systemstabilität und Versorgungssicherheit des Erdgastransportsystems.
         </p>
-        <h3 style={styles.coloredHeader}>
+        <h3
+          style={
+            phoneSize
+              ? { ...styles.pcoloredHeader }
+              : { ...styles.coloredHeader }
+          }
+        >
           Kontakt des Datenschutzbeauftragten
         </h3>{' '}
         <TableContainer style={{ padding: 0, width: '100%' }}>

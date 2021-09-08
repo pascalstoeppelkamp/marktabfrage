@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { MenuItem, Select, Box } from '@material-ui/core';
+import {
+  MenuItem,
+  Select,
+  Box,
+  InputLabel,
+  FormControl,
+  IconButton,
+  Tooltip,
+} from '@material-ui/core';
+import Lock from '@material-ui/icons/Lock';
 
 export default class DropDown extends Component {
   constructor(props) {
@@ -27,7 +36,7 @@ export default class DropDown extends Component {
       );
     });
     return (
-      <Box
+      <FormControl
         vborder={1}
         borderColor="grey.500"
         style={{
@@ -36,6 +45,9 @@ export default class DropDown extends Component {
           backgroundColor: "published ? '#FFE4C470' : '#FFFFFF',",
         }}
       >
+        <InputLabel id="demo-simple-select-helper-label">
+          {this.props.placeholder}
+        </InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id={'demo-controlled-open-select'}
@@ -45,7 +57,7 @@ export default class DropDown extends Component {
         >
           {arr}
         </Select>
-      </Box>
+      </FormControl>
     );
   };
   render() {

@@ -5,6 +5,7 @@ import {
   Typography,
   Radio,
   RadioGroup,
+  InputLabel,
 } from '@material-ui/core';
 import TextField from './TextField';
 import DropDown from './DropDown';
@@ -57,7 +58,7 @@ export default class RadioButton extends Component {
     let arr = [];
     let coordsField = false;
 
-    label === 'Koordinaten des Projektstandortes (rechts/links)'
+    label === 'Koordinaten des Projektstandortes'
       ? (coordsField = true)
       : (coordsField = false);
 
@@ -74,52 +75,66 @@ export default class RadioButton extends Component {
             value={item}
             control={
               <Radio
-                color="primary"
+                color="grey"
                 value={item}
                 onClick={(value) => this._RadioButton(value, data)}
               />
             }
-            label={<Typography style={{ fontSize: 14 }}>{item}</Typography>}
+            label={
+              <Typography style={{ fontSize: 14, color: 'grey' }}>
+                {item}
+              </Typography>
+            }
             labelPlacement="end"
             style={{ paddingLeft: 10, paddingTop: 1 }}
           />
           {coordsField ? (
-            <div style={{ width: '100%' }}>
+            <>
               <DropDown
+                label={this.props.label}
                 setAllData={this.props.setAllData}
                 fromRadioBtn={true}
                 data={data}
                 key={`${key}DropDown`}
                 values={['Bitte Ausfüllen', 'Entry / Quelle', 'Exit / Senke']}
               />
-              <TextField
-                getAllData={this.props.getAllData}
-                setAllData={this.props.setAllData}
-                fromRadioBtn={true}
-                data={data}
-                key={`${key}TextField`}
-                published={published} /* value={} */
-              />
-            </div>
+              <Box style={{ padding: 10 }}>
+                {' '}
+                <TextField
+                  placeholder={this.props.label}
+                  getAllData={this.props.getAllData}
+                  setAllData={this.props.setAllData}
+                  fromRadioBtn={true}
+                  data={data}
+                  key={`${key}TextField`}
+                  published={published} /* value={} */
+                />
+              </Box>
+            </>
           ) : null}
         </Box>
       );
     });
 
     return (
-      <Box
-        border={1}
-        borderColor="grey.500"
-        style={{
-          width: '100%',
-          display: 'flex',
-          backgroundColor: published ? '#FFE4C470' : '#FFFFFF',
-        }}
-      >
-        <RadioGroup row aria-label="position" style={styles.radioGroup}>
-          {arr}
-        </RadioGroup>
-      </Box>
+      <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <InputLabel id="label" style={{ padding: 5 }}>
+          {this.props.label}
+        </InputLabel>
+        <Box
+          border={1}
+          borderColor="grey.500"
+          style={{
+            width: '100%',
+            display: 'flex',
+            backgroundColor: published ? '#FFE4C470' : '#FFFFFF',
+          }}
+        >
+          <RadioGroup row aria-label="position" style={styles.radioGroup}>
+            {arr}
+          </RadioGroup>
+        </Box>
+      </div>
     );
   };
   render() {

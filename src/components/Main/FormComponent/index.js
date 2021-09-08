@@ -17,8 +17,8 @@ const styles = {
     display: 'flex',
     alignItems: 'flex-end',
     fontFamily: 'sans-serif',
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: 50,
+    paddingRight: 50,
   },
   textfield: {
     flex: 1,
@@ -50,6 +50,7 @@ export default class FormComponent extends Component {
           <TextField
             setAllData={this.props.setAllData}
             id={id}
+            placeholder={label}
             published={published}
             data={data}
             getAllData={this.props.getAllData}
@@ -58,18 +59,20 @@ export default class FormComponent extends Component {
       case 'Radiobutton':
         return (
           <RadioButton
+            label={label}
             setAllData={this.props.setAllData}
             id={id}
             values={values}
             published={published}
             data={data}
             getAllData={this.props.getAllData}
-            label={label}
           />
         );
       case 'Select':
         return (
           <DropDown
+            label={label}
+            placeholder={label}
             setAllData={this.props.setAllData}
             id={id}
             values={values}
@@ -81,6 +84,7 @@ export default class FormComponent extends Component {
       case 'Checkbox':
         return (
           <CheckBox
+            label={label}
             setAllData={this.props.setAllData}
             id={id}
             values={values}
@@ -98,6 +102,7 @@ export default class FormComponent extends Component {
             data={data}
             published={published}
             getAllData={this.props.getAllData}
+            label={label}
           />
         );
       default:
@@ -118,8 +123,15 @@ export default class FormComponent extends Component {
     const { label } = this.props.data;
     return (
       <Box style={styles.container}>
-        <Box style={styles.label}>{label}</Box>
-        <Box style={styles.textfield}>{this._returnData(data)}</Box>
+        <Box
+          style={{
+            ...styles.textfield,
+            paddingLeft: 50,
+            paddingRight: 50,
+          }}
+        >
+          {this._returnData(data)}
+        </Box>
       </Box>
     );
   }

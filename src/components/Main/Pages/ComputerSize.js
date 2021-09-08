@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Box, Button, Tab, Tabs, AppBar } from '@material-ui/core';
+import { Box, Button, Tab, Tabs, AppBar, Typography } from '@material-ui/core';
 import ExitToApp from '@material-ui/icons/ExitToApp';
-import VpnKey from '@material-ui/icons/VpnKey';
+import Lock from '@material-ui/icons/Lock';
 import HeaderLogos from './../../HeaderLogos';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -180,15 +180,16 @@ class computerSize extends Component {
               }}
             >
               <Box className={classes.email}>
-                <p
+                <Typography
                   style={{
                     fontFamily: 'sans-serif',
                     fontSize: 14,
                     margin: 10,
+                    color: 'white',
                   }}
                 >
                   {username}
-                </p>
+                </Typography>
               </Box>
               <Box className={classes.logoutBtn}>
                 <Button
@@ -197,7 +198,7 @@ class computerSize extends Component {
                     <ExitToApp style={{ fontSize: 30, color: 'white' }} />
                   }
                 >
-                  <p style={{ color: 'white' }}>Logout</p>
+                  <Typography style={{ color: 'white' }}>Logout</Typography>
                 </Button>
               </Box>
             </Box>
@@ -205,9 +206,9 @@ class computerSize extends Component {
             <Box className={classes.logoutBtn}>
               <Button
                 onClick={() => this.props.login()}
-                startIcon={<VpnKey style={{ fontSize: 30, color: 'white' }} />}
+                startIcon={<Lock style={{ fontSize: 30, color: 'white' }} />}
               >
-                <p style={{ color: 'white' }}>Login</p>
+                <Typography style={{ color: 'white' }}>Login</Typography>
               </Button>
             </Box>
           )}

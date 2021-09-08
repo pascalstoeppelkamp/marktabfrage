@@ -1,5 +1,6 @@
-const fields = {
-  row1: {
+const fields = [
+  {
+    id: 1,
     punktart: 'Wasserstoff',
     einAusspeisung: 'Einspeiseleistung',
     einheit: 'MWh/hth',
@@ -16,7 +17,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row2: {
+  {
+    id: 2,
     punktart: 'Wasserstoff',
     einAusspeisung: 'Einspeisemenge pro Jahr',
     einheit: 'MWh/hth',
@@ -33,7 +35,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row3: {
+  {
+    id: 3,
     punktart: 'Wasserstoff',
     einAusspeisung: 'Ausspeiseleistung',
     einheit: 'MWh/hth',
@@ -50,7 +53,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row4: {
+  {
+    id: 4,
     punktart: 'Wasserstoff',
     einAusspeisung: 'Ausspeiseleistung pro Jahr',
     einheit: 'MWh/hth',
@@ -67,7 +71,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row5: {
+  {
+    id: 5,
     punktart: 'Synthetisches Methan',
     einAusspeisung: 'Einspeiseleistung',
     einheit: 'MWh/hth',
@@ -84,7 +89,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row6: {
+  {
+    id: 6,
     punktart: 'Synthetisches Methan',
     einAusspeisung: 'Einspeisemenge pro Jahr',
     einheit: 'MWh/hth',
@@ -101,7 +107,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row7: {
+  {
+    id: 7,
     punktart: 'Biomethan',
     einAusspeisung: 'Einspeiseleistung',
     einheit: 'MWh/hth',
@@ -118,7 +125,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row8: {
+  {
+    id: 8,
     punktart: 'Biomethan',
     einAusspeisung: 'Einspeisemenge pro Jahr',
     einheit: 'MWh/hth',
@@ -135,7 +143,8 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-  row9: {
+  {
+    id: 9,
     punktart: 'Bei geplanter Elektrolyse',
     einAusspeisung: 'Elektrische Leistung der Anlage',
     einheit: 'MWh/hth',
@@ -152,5 +161,5 @@ const fields = {
     viernull: '',
     fuenfnull: '',
   },
-};
+];
 export default fields;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Box, TextField, Button, CircularProgress } from '@material-ui/core';
 import ServerUtils from '../../utils/ServerUtils';
-
-const styles = {
+import { withStyles } from '@material-ui/core/styles';
+const styles = (theme) => ({
   container: {
     height: '100%',
     width: '100%',
@@ -54,9 +54,9 @@ const styles = {
     margin: 5,
     alignSelf: 'flex-end',
   },
-};
+});
 
-export default class LoginBox extends Component {
+class LoginBox extends Component {
   constructor(props) {
     super(props);
     this.ServerUtils = new ServerUtils();
@@ -89,22 +89,32 @@ export default class LoginBox extends Component {
 
   render() {
     let { error, isLoading } = this.state;
+    let { classes } = this.props;
     return (
-      <Box style={styles.container}>
-        <Button style={styles.close} onClick={() => this.props.closeModal()}>
+      <Box className={classes.container}>
+        <Button
+          className={classes.close}
+          onClick={() => this.props.closeModal()}
+        >
           X
         </Button>
         {isLoading ? (
-          <CircularProgress disableShrink style={styles.progressBar} />
+          <CircularProgress disableShrink className={classes.progressBar} />
         ) : null}
         <Box style={{ marginLeft: 30 }}>
-          <p style={{ fontFamily: 'sans-serif', fontSize: 23, paddingTop: 20 }}>
+          <p
+            style={{
+              fontFamily: 'IBM Plex Sans Arabic',
+              fontSize: 23,
+              paddingTop: 20,
+            }}
+          >
             Anmeldung
           </p>
         </Box>
-        <Box style={styles.loginContainer}>
+        <Box className={classes.loginContainer}>
           <TextField
-            style={styles.username}
+            className={classes.username}
             variant="filled"
             onChange={(username) =>
               this.setState({ username: username.target.value })
@@ -112,7 +122,7 @@ export default class LoginBox extends Component {
             label="Email"
           />
           <TextField
-            style={styles.password}
+            className={classes.password}
             variant="filled"
             type="password"
             onChange={(password) =>
@@ -120,14 +130,19 @@ export default class LoginBox extends Component {
             }
             label="password"
           />
-          <Box borderColor="primary.main" border={1} style={styles.loginBtnBox}>
-            <Button onClick={this.Login} style={styles.loginBtn}>
+          <Box
+            borderColor="primary.main"
+            border={1}
+            className={classes.loginBtnBox}
+          >
+            <Button onClick={this.Login} className={classes.loginBtn}>
               Anmelden
             </Button>
           </Box>
-          {error ? <p style={styles.errorMsg}>{error}</p> : null}
+          {error ? <p className={classes.errorMsg}>{error}</p> : null}
         </Box>
       </Box>
     );
   }
 }
+export default withStyles(styles)(LoginBox);

@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Box, ClickAwayListener, AppBar, Drawer } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import ExitToApp from '@material-ui/icons/ExitToApp';
-import VpnKey from '@material-ui/icons/VpnKey';
+import Lock from '@material-ui/icons/Lock';
 const styles = (theme) => ({
   email: {
     justifyContent: 'flex-start',
@@ -101,7 +101,7 @@ class SimpleMenu extends React.Component {
   handleScroll(evt) {
     const lastScroll = window.scrollY;
 
-    if (lastScroll === this.lastScroll) {
+    if (lastScroll === this.lastScroll || window.scrollY < 10) {
       return;
     }
 
@@ -175,7 +175,7 @@ class SimpleMenu extends React.Component {
                     fontFamily: 'sans-serif',
                     fontSize: 14,
                     margin: 10,
-                    color: 'rgb(106, 172, 69)',
+                    color: 'white',
                   }}
                 >
                   {username}
@@ -194,7 +194,7 @@ class SimpleMenu extends React.Component {
             <Box className={classes.logoutBtn}>
               <Button
                 onClick={() => this.props.login()}
-                startIcon={<VpnKey style={{ fontSize: 30, color: 'white' }} />}
+                startIcon={<Lock style={{ fontSize: 30, color: 'white' }} />}
               />
             </Box>
           )}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Pages from './components/Main/Pages';
 import LoginModal from './components/LoginModal';
-import { Box } from '@material-ui/core';
 import ServerUtils from './utils/ServerUtils';
 
 export default class App extends Component {
@@ -42,7 +41,7 @@ export default class App extends Component {
   render() {
     let { loginModal, username, userRole, fnb } = this.state;
     return (
-      <Box style={{}}>
+      <>
         {loginModal ? (
           <LoginModal
             _Login={this._Login}
@@ -56,11 +55,11 @@ export default class App extends Component {
           userRole={userRole}
           fnb={fnb}
           setAllData={this.setAllData}
-          getAllData={this.state.allData}
           tableData={this.setTableData}
+          getAllData={this.state.allData}
           getTableData={this.state.tableData}
         />
-      </Box>
+      </>
     );
   }
 }

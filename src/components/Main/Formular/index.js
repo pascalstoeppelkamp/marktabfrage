@@ -17,7 +17,7 @@ import { Alert } from '@material-ui/lab';
 const styles = {
   form: {
     height: '100%',
-    width: '99%',
+    width: '100%',
   },
   rightPage: {
     height: '100%',
@@ -106,26 +106,23 @@ export default class index extends Component {
     return (
       <>
         <Header />
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <Box style={styles.form}>
-              <Form
-                getAllData={this.props.getAllData}
-                setAllData={this.props.setAllData}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box style={styles.rightPage}>
-              <Site2
-                allData={this.props.setAllData}
-                getAllData={this.props.getAllData}
-              />
-            </Box>
-          </Grid>
+        <Grid container style={{ padding: 25 }}>
+          <Box style={styles.form}>
+            <Form
+              getAllData={this.props.getAllData}
+              setAllData={this.props.setAllData}
+            />
+          </Box>
+
+          <Box style={styles.rightPage}>
+            <Site2
+              allData={this.props.setAllData}
+              getAllData={this.props.getAllData}
+            />
+          </Box>
         </Grid>
 
-        <Box style={{ marginTop: 20 }}>
+        <Box style={{ marginTop: 20, padding: 25 }}>
           <Table
             tableData={this.props.tableData}
             getTableData={this.props.tableData}

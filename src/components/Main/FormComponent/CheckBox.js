@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Box, Checkbox, FormControlLabel, Typography } from '@material-ui/core';
+import {
+  Box,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+  InputLabel,
+} from '@material-ui/core';
 export default class CheckBox extends Component {
   _SetCheckBox = (value, data) => {
     value = value.target.value;
@@ -23,16 +29,21 @@ export default class CheckBox extends Component {
       arr.push(
         <FormControlLabel
           key={item}
+          color="grey"
           value={item}
           control={
             <Checkbox
               key={`${item}Checkbox`}
-              color="primary"
+              color="grey"
               value={item}
               onClick={(value) => this._SetCheckBox(value, data)}
             />
           }
-          label={<Typography style={{ fontSize: 14 }}>{item}</Typography>}
+          label={
+            <Typography style={{ fontSize: 14, color: 'grey' }}>
+              {item}
+            </Typography>
+          }
           labelPlacement="end"
           style={{ flex: 1, paddingLeft: 5, paddingTop: 5 }}
         />
@@ -58,6 +69,13 @@ export default class CheckBox extends Component {
   render() {
     let { values, published, id, data } = this.props;
     let key = id;
-    return this.checkbox(values, published, key, data);
+    return (
+      <Box style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
+        <InputLabel id="label" style={{ padding: 5 }}>
+          {this.props.label}
+        </InputLabel>
+        {this.checkbox(values, published, key, data)}
+      </Box>
+    );
   }
 }

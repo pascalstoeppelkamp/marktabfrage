@@ -1,34 +1,108 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { TextField } from '@material-ui/core';
 import rows from '../../data/TableData';
+import { DataGrid } from '@material-ui/data-grid';
 
-const styles = {
-  header: {
-    fontSize: 14,
-    color: 'black',
-    fontWeight: 'bold',
-    padding: 1,
+const columns = [
+  {
+    field: 'punktart',
+    headerName: 'Punktart',
+    sortable: false,
+    width: 165,
   },
-  year: {
-    backgroundColor: '#FFE4C470',
-    padding: 2,
-    borderWidth: 0,
+  {
+    field: 'einAusspeisung',
+    headerName: 'Ein-/Ausspeisung (Bitte Angaben als Brennwert)',
+    sortable: false,
+    width: 225,
   },
-  TextField: {
-    height: '100%',
-    width: '100%',
+  {
+    field: 'einheit',
+    headerName: ' Einheit',
+    type: 'number',
+    sortable: false,
+    width: 120,
   },
-  names: {
-    backgroundColor: '#fff',
-    padding: 5,
+  {
+    field: 'zweidrei',
+    headerName: ' 2023',
+    type: 'number',
+    editable: true,
+    sortable: false,
+    width: 120,
   },
-};
+  {
+    field: 'zweivier',
+    headerName: ' 2024',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'zweifuenf',
+    headerName: ' 2025',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'zweisechs',
+    headerName: ' 2026',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'zweisieben',
+    headerName: ' 2027',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'zweiacht',
+    headerName: ' 2028',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'zweineun',
+    headerName: ' 2029',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'dreinull',
+    headerName: ' 2030',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    field: 'dreieins',
+    headerName: ' 2031',
+    type: 'number',
+    width: 120,
+    editable: true,
+    sortable: false,
+  },
+  {
+    width: 120,
+    field: 'dreizwei',
+    headerName: ' 2032',
+    type: 'number',
+    editable: true,
+    sortable: false,
+  },
+];
 
 export default class DataTable extends React.Component {
   _changeTextField = (textfield, data, row) => {
@@ -39,196 +113,47 @@ export default class DataTable extends React.Component {
     this.props.tableData(data);
   };
 
+  handleEditRowsModelChange = (model) => {
+    if (!model) return;
+    let v = null;
+    let id = null;
+    let data = null;
+    let keyy = null;
+
+    for (const [key, value] of Object.entries(model)) {
+      id = key;
+      for (const [kkey, val] of Object.entries(value)) {
+        v = val.value;
+        keyy = kkey;
+      }
+    }
+    if (!keyy || !id) return;
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].id == id) {
+        data = rows[i];
+        data.id = i;
+        data[keyy] = v;
+      }
+    }
+    if (!data) return;
+    this.props.tableData(data);
+  };
+
   render() {
     return (
-      <TableContainer style={{ padding: 0 }}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" style={styles.header}>
-                Punktart
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                Ein-/Ausspeisung (Bitte Angaben als Brennwert)
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                Einheit
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2023
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2024
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2025
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2026
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2027
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2028
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2029
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2030
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2031
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2032
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2040
-              </TableCell>
-              <TableCell align="center" style={styles.header}>
-                2050
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {Object.keys(rows).map((row, index) => (
-              <TableRow style={{ padding: 0 }} key={index}>
-                <TableCell style={styles.names} align="center">
-                  {rows[row].punktart}
-                </TableCell>
-                <TableCell style={styles.names} align="center">
-                  {rows[row].einAusspeisung}
-                </TableCell>
-                <TableCell style={styles.names} align="center">
-                  {rows[row].einheit}
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweidrei}
-                    id={'zweidrei'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweivier}
-                    id={'zweivier'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweifuenf}
-                    id={'zweifuenf'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweisechs}
-                    id={'zweisechs'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweisieben}
-                    id={'zweisieben'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweiacht}
-                    id={'zweiacht'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].zweineun}
-                    id={'zweineun'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].dreinull}
-                    id={'dreinull'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].dreieins}
-                    id={'dreieins'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].dreizwei}
-                    id={'dreizwei'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].viernull}
-                    id={'viernull'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-                <TableCell align="center" style={styles.year}>
-                  <TextField
-                    value={rows[row].fuenfnull}
-                    id={'fuenfnull'}
-                    data={row}
-                    onChange={(text, id) =>
-                      this._changeTextField(text, rows[row], row)
-                    }
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <DataGrid
+        checkboxSelection={false}
+        style={{ height: '100%', backgroundColor: '#FFE4C470' }}
+        rows={rows}
+        autoHeight={true}
+        columns={columns}
+        hideFooterSelectedRowCount={true}
+        hideFooterPagination={true}
+        hideFooterRowCount={true}
+        disableColumnFilter={true}
+        disableColumnMenu={true}
+        onEditRowsModelChange={this.handleEditRowsModelChange}
+      />
     );
   }
 }

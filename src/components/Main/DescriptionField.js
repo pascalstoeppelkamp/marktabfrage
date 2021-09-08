@@ -11,6 +11,7 @@ const styles = {
     fontSize: 14,
     padding: 5,
     paddingTop: 5,
+    outlineColor: 'rgb(106, 172, 69)',
   },
 };
 
@@ -53,6 +54,7 @@ export default class Test extends React.Component {
               ? getAllData['ProjectDescription']?.value
               : ''
           }
+          placeholder={this.state.ProjectDescription.label}
           style={styles.input}
           onChange={this._changeTextField}
         />
